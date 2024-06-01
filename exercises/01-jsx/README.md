@@ -10,7 +10,7 @@ Using your command line, you will need to navigate to the this folder, install a
 cd exercises/01-jsx/
 code . # if you would like to open this in a separate VS Code window
 npm install
-npm start
+npm run dev
 ```
 
 When you start the application, you should see errors on your screen.
@@ -53,7 +53,7 @@ Break out of JSX and plugin values from the `person` object inside of `Person.js
 
 - The Person component should display the person's name (Peter Piper).
 - The Person component should display the person's occupation (Musician).
-- The Person component should display the person's age on the screen (83). This should come from a result from a function that calculates the person's age.
+- The Person component should display the person's age on the screen (84). This should come from a result from a function that calculates the person's age.
 
 # Assignment 3
 

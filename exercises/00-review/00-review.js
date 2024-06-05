@@ -1,3 +1,6 @@
+
+import {greet} from './greet.js';
+
 /**
  * Solve this problem using ES modules (ESM).
  * ES modules allow you break up your code into multiple files (or modules), and then share code between different files.

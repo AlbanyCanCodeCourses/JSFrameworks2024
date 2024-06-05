@@ -34,7 +34,7 @@ const greet = (name) => {
  **/
 
 const highestNumber = (array) => {
-  let highest = -Infinity;
+  let highest = array[0];
   array.forEach(element => highest = (element > highest ? element : highest));
   return highest;
 };
@@ -49,8 +49,7 @@ const highestNumber = (array) => {
  **/
 
 const combineArray = (array1, array2) => {
-  let newArray = [...array1, ...array2];
-  return newArray;
+  return [...array1, ...array2];
 };
 
 /**
@@ -61,8 +60,7 @@ const combineArray = (array1, array2) => {
  */
 
 const combineObject = (obj1, obj2) => {
-  let newObj = { ...obj1, ...obj2 };
-  return newObj;
+  return { ...obj1, ...obj2 };
 };
 
 /**

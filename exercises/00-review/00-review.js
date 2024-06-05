@@ -1,3 +1,5 @@
+import greet from "./greet.js";
+
 /**
  * Solve this problem using ES modules (ESM).
  * ES modules allow you break up your code into multiple files (or modules), and then share code between different files.
@@ -33,6 +35,8 @@ const greet = (name) => {
 
 const highestNumber = (array) => {
   // Write your answer here
+  array.sort((a, b) => a - b);
+  return array[array.length - 1];
 };
 
 /**
@@ -46,6 +50,8 @@ const highestNumber = (array) => {
 
 const combineArray = (array1, array2) => {
   // Write your answer here
+  let array3 = [...array1, ...array2];
+  return array3;
 };
 
 /**
@@ -57,6 +63,8 @@ const combineArray = (array1, array2) => {
 
 const combineObject = (obj1, obj2) => {
   // Write your answer here
+  let obj3 = { ...obj1, ...obj2 };
+  return obj3;
 };
 
 /**
@@ -68,6 +76,7 @@ const combineObject = (obj1, obj2) => {
 
 const doubleValues = (arr) => {
   // Write your answer here
+  return arr.map((x) => x * 2);
 };
 
 /**
@@ -81,6 +90,7 @@ const doubleValues = (arr) => {
  */
 const onlyEvenValues = (arr) => {
   // Write your answer here
+  return arr.filter((x) => x % 2 === 0);
 };
 
 /**
@@ -103,6 +113,7 @@ const onlyEvenValues = (arr) => {
  */
 const removeVowels = (str) => {
   // Write your answer here
+  return str.replace(/[aeiou]/gi, "").toLowerCase();
 };
 
 /**
@@ -123,6 +134,8 @@ const getIsHungryText = () => {
   //   isHungry = "Keep coding!";
   // }
 
+  let isHungry = isStomachEmpty ? "Go eat something." : "Keep coding!";
+
   return isHungry;
 };
 
@@ -140,8 +153,7 @@ const getTempOfTomorrow = () => {
   };
 
   // Start of what you should change
-  const today = AVG_TEMPERATURES.today;
-  const tomorrow = AVG_TEMPERATURES.tomorrow;
+  const { today, tomorrow } = AVG_TEMPERATURES;
   // End of what you should change
   return `Today's temperature is ${today}.\nTomorrow's temperature is ${tomorrow}`;
 };
@@ -159,6 +171,7 @@ const getTempOfTomorrow = () => {
  */
 const addItems = (arr) => {
   // Write your answer here
+  return arr.reduce((a, b) => a + b, 0);
 };
 
 /**
@@ -174,6 +187,9 @@ const addItems = (arr) => {
 
 const removeDuplicates = (array) => {
   // Write your answer here
+  // console.log(array);
+  // console.log([...new Set(array)]);
+  return [...new Set(array)];
   // Return an array of unique values
 };
 

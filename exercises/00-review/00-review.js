@@ -1,3 +1,4 @@
+import greet from "./greet.js";
 /**
  * Solve this problem using ES modules (ESM).
  * ES modules allow you break up your code into multiple files (or modules), and then share code between different files.
@@ -33,8 +34,17 @@ const greet = (name) => {
 
 const highestNumber = (array) => {
   // Write your answer here
-};
 
+
+let highnumber = array[0];
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] > highnumber) {
+      highnumber = array[i];
+    }
+  }
+  return highnumber;
+};
+console.log(highestNumber[10, 2, 5, 7, 9]);
 /**
  * Combine an array by using the spread operator
  * @param  {array} array1
@@ -46,7 +56,10 @@ const highestNumber = (array) => {
 
 const combineArray = (array1, array2) => {
   // Write your answer here
+  return [...array1, ...array2];//one way
+ 
 };
+console.log(combineArray(['japan', 'china'], ['usa','uk']));
 
 /**
  * Combine two objects into one
@@ -57,7 +70,15 @@ const combineArray = (array1, array2) => {
 
 const combineObject = (obj1, obj2) => {
   // Write your answer here
+  const array1 = Object.entries(obj1);// from object to array
+  const array2 = Object.entries(obj2);
+  const combineArray = array1.concat(array2);
+  combineObject = Object.fromEntries(combineArray);//array to object
+return combineObject;
 };
+
+// Example usage
+console.log(combineObject({ country1: 'Japan' }, { country2: 'USA' }));
 
 /**
  * Please use the higher order function map to solve this problem.
@@ -66,9 +87,22 @@ const combineObject = (obj1, obj2) => {
  * @returns {array} new array, with each value doubled e.g. [2, 5, 10]
  */
 
+// const doubleValues = (arr) => {
+//   // Write your answer here
+//   let newnumbers = [];
+//   for (let i = 0; i < arr.length; i++)
+//   {
+//     newnumbers[i] = 2 * arr[i];
+
+//   }
+//   return newnumbers;
+// };
+
 const doubleValues = (arr) => {
-  // Write your answer here
-};
+  return arr.map(number => number * 2);
+}
+
+console.log(doubleValues([1, 4, 6]));
 
 /**
  * * Please use the higher order function filter to solve this problem.
@@ -81,7 +115,9 @@ const doubleValues = (arr) => {
  */
 const onlyEvenValues = (arr) => {
   // Write your answer here
+  return arr.filter(number => number % 2 == 0);
 };
+console.log(onlyEvenValues([1, 2, 3, 4, 5]));
 
 /**
  * Create a function called removeVowels which accepts a string and returns a new string with all of the vowels (both uppercase and lowercase) removed.
@@ -91,19 +127,20 @@ const onlyEvenValues = (arr) => {
  * removeVowels('TIM') // ('tm')
  * removeVowels('ZZZZZZ') // ('zzzzzz')
  */
-
-/**
- * Remove all vowels from within a string and lower case each letter
- * @param {string} str
- * @returns {string} string with the vowels removed
- * @example
- *  removeVowels('Elie') // ('l')
- *  removeVowels('TIM') // ('tm')
- *  removeVowels('ZZZZZZ') // ('zzzzzz')
- */
 const removeVowels = (str) => {
-  // Write your answer here
+  let vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+  let result = "";
+  if (!vowels.includes(str[i])) {
+    result += str[i];
+
+  }
+  return result.toLowerCase();
+
 };
+console.log(removeVowels('ELIE'));
+
+
+
 
 /**
  * Solve this problem using the ternary operator.
@@ -122,9 +159,11 @@ const getIsHungryText = () => {
   // } else {
   //   isHungry = "Keep coding!";
   // }
+  let isHungry= isStomachEmpty?'Go eat something':'Keep coding!'
 
   return isHungry;
 };
+console.log(getIsHungryText());
 
 /**
  * Refactor this to use destructuring. For an example of destructuring,
@@ -159,8 +198,15 @@ const getTempOfTomorrow = () => {
  */
 const addItems = (arr) => {
   // Write your answer here
+  let sum = 0;
+  arr.forEach(number => {
+    
+  
+    sum = sum + number;
+  })
+  return sum;
 };
-
+console.log(addItems[1, 5, 6]);
 /**
  * Remove duplicate values from an array.
  * @example
@@ -175,7 +221,15 @@ const addItems = (arr) => {
 const removeDuplicates = (array) => {
   // Write your answer here
   // Return an array of unique values
+  let newArray = [];
+  array.forEach((number, index) => {
+    if (index === 0 || index[i - 1] !== number) {
+      newArray.push(number);
+    }
+  });
+  return newArray;
 };
+console.log(removeDuplicates([1, 1, 2, 2, 3, 3]));
 
 /**
  * Ignore this. It is for the tests.

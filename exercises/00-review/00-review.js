@@ -146,14 +146,15 @@ const getTempOfTomorrow = () => {
     today: 77.5,
     tomorrow: 79,
   };
+};
 
   // Start of what you should change
   //const today = AVG_TEMPERATURES.today;
  // const tomorrow = AVG_TEMPERATURES.tomorrow;
- const { today, tomorrow } = {
+ const { today, tomorrow } = AVG_TEMPERATURES;
   // End of what you should change
   return `Today's temperature is ${today}.\nTomorrow's temperature is ${tomorrow}`;
-};
+
 
 /**
  * Please use the high order function reduce to solve this problem. For an example of reduce,

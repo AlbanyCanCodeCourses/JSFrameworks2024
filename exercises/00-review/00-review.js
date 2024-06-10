@@ -1,5 +1,4 @@
-
-import {greet} from './greet.js';
+import { greet } from './greet.js';
 
 /**
  * Solve this problem using ES modules (ESM).
@@ -36,6 +35,7 @@ const greet = (name) => {
 
 const highestNumber = (array) => {
   // Write your answer here
+  return Math.max(...array);
 };
 
 /**
@@ -49,6 +49,7 @@ const highestNumber = (array) => {
 
 const combineArray = (array1, array2) => {
   // Write your answer here
+  return [...array1,array2];
 };
 
 /**
@@ -60,6 +61,7 @@ const combineArray = (array1, array2) => {
 
 const combineObject = (obj1, obj2) => {
   // Write your answer here
+  return {...obj1,...obj2}; 
 };
 
 /**
@@ -71,6 +73,7 @@ const combineObject = (obj1, obj2) => {
 
 const doubleValues = (arr) => {
   // Write your answer here
+  
 };
 
 /**
@@ -143,8 +146,10 @@ const getTempOfTomorrow = () => {
   };
 
   // Start of what you should change
-  const today = AVG_TEMPERATURES.today;
-  const tomorrow = AVG_TEMPERATURES.tomorrow;
+  //const today = AVG_TEMPERATURES.today;
+  //const tomorrow = AVG_TEMPERATURES.tomorrow;
+  const {today, tomorrow} = AVG_TEMPERATURES
+
   // End of what you should change
   return `Today's temperature is ${today}.\nTomorrow's temperature is ${tomorrow}`;
 };

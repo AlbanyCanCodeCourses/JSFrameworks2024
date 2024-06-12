@@ -50,3 +50,17 @@ The "Read More" button should display the entire text. The "Read Less" button sh
 You must use the `useState()` hook to solve this problem.
 
 ![](less-text.gif)
+
+## Challenge 2
+
+As a user, I would like to click on a button to role a dice.
+
+### Instructions
+
+Before beginning this exercise, open and review the code inside of _src/components/DiceRoll/DiceRoll.jsx_. Try refreshing the screen. Notice how it displays a different and random image each time. What you are going to do is to make the "Roll" button functional. Read the comments for clues on how to do this.
+
+### Acceptance Criteria
+
+When the user clicks on the "Roll" button, it should "roll the dice". This means that it selects a number between 1 and 6 at random and then update the dice image to have the new number of dots.
+
+You must use the `useState()` hook to solve this problem.

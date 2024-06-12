@@ -34,14 +34,15 @@ const greet = (name) => {
 
 const highestNumber = (array) => {
   // Write your answer here
-let highest = array[0]
+  let sum = array[0]
 
   array.forEach(num => {
-    if(num > highest){
-      highest = num
-    }
-  });
-  return highest
+  if(num > sum){
+    sum = num
+  }
+});
+return sum  
+
 };
 
 /**
@@ -54,9 +55,10 @@ let highest = array[0]
  **/
 
 const combineArray = (array1, array2) => {
+let newArray = [...array1,...array2]
+  
   // Write your answer here
 
-  const newArray = [...array1, ...array2]
   return newArray
 };
 
@@ -68,10 +70,10 @@ const combineArray = (array1, array2) => {
  */
 
 const combineObject = (obj1, obj2) => {
-  // Write your answer here
-  const myObject = {...obj1,...obj2}
 
-  return myObject
+  const newObject = {...obj1,...obj2}
+  // Write your answer here
+  return newObject;
 };
 
 /**
@@ -83,7 +85,7 @@ const combineObject = (obj1, obj2) => {
 
 const doubleValues = (arr) => {
   // Write your answer here
-  return arr.map(num => num * 2);
+  return arr.map(num => num * 2)
 };
 
 /**
@@ -96,14 +98,10 @@ const doubleValues = (arr) => {
  *   onlyEvenValues([5,1,2,3,10]) // [2,10]
  */
 const onlyEvenValues = (arr) => {
-  let newArray = []
-  arr.forEach(num =>{
-    if (num % 2 == 0){
-      newArray.push(num)
-    }
+
     // Write your answer here
-  })
-return newArray 
+
+    return arr.filter(num => num % 2 === 0)
 };
 
 /**
@@ -151,8 +149,10 @@ const getIsHungryText = () => {
   // } else {
   //   isHungry = "Keep coding!";
   // }
+
   let isHungry = isStomachEmpty ? "Go eat something." : "Keep coding!" ;
   return isHungry;
+
 };
 /**
  * Refactor this to use destructuring. For an example of destructuring,
@@ -170,7 +170,6 @@ const getTempOfTomorrow = () => {
   // Start of what you should change
   // const today = AVG_TEMPERATURES.today;
   // const tomorrow = AVG_TEMPERATURES.tomorrow;
-
   const { today, tomorrow } = AVG_TEMPERATURES;
 
   // End of what you should change
@@ -193,7 +192,6 @@ const getTempOfTomorrow = () => {
 const addItems = (arr) => {
 
   return arr.reduce((sum, num) => sum + num);
-  // Write your answer here
 };
 
 /**
@@ -211,7 +209,6 @@ const removeDuplicates = (array) => {
   // Write your answer here
   // Return an array of unique values
   return [...new Set(array)];
-
 };
 
 /**

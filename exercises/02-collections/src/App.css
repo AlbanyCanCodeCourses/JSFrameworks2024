@@ -1,3 +1,42 @@
 /**
  * Write your CSS here
  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100svh;
+}
+
+#root,
+.phones,
+.technologies {
+  display: flex;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.phones,
+.technologies {
+  width: auto;
+  display: flex;
+}
+
+.phones img,
+.technologies img {
+  object-fit: cover;
+  width: auto;
+  height: 300px;
+}
+
+.phones img {
+  height: 250px;
+}

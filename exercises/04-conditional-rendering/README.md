@@ -1,4 +1,4 @@
-## Conditional Rendering
+# Conditional Rendering
 
 In Visual Studio code, press `command+shift+v` (Mac) or `ctrl+shift+v` (Windows) to open a Markdown preview.
 
@@ -29,42 +29,32 @@ To stop the tests, press `ctrl+c`.
 
 For this assignment, you will build an accordion. An [accordion](https://semantic-ui.com/modules/accordion.html) is a vertically stacked set of interactive headings that each contain a title, content snippet, or thumbnail representing a section of content. Each section of content can be "expanded" or "collapsed" to reveal the content associated with that item.
 
-### Step 1: Create AccordionSection Component
-
-<ol>
-  <li>Create a component named <code>AccordionSection</code>.</li>
-  <li>It should render one of the sample HTML snippets below.</li>
-  <li>It should receive <code>isOpen</code> (a boolean), <code>title</code>, and <code>content</code> as props.</li>
-  <li>If <code>isOpen</code> is true, render the expanded snippet. If false, render the collapsed snippet.</li>
-</ol>
-
-### Step 2: Use AccordionSection in App.jsx
-
-<ol>
-  <li>Import <code>AccordionSection</code> in your <code>App.jsx</code> file.</li>
-  <li>Create an accordion with three sections using <code>AccordionSection</code>.</li>
-  <li>Only the middle section should be expanded.</li>
-  <li>Loop through the contents of the file <code>src/content/accordion.js</code> to generate the sections.</li>
-</ol>
-
-### Step 3: Add CSS
-
-Create a file named App.css and include styles for the accordion. Use the CSS properties<code> display: block </code> and <code>display: none </code> to show or hide the content based on whether the section is expanded or collapsed.
-
 ![An example of an accordion](demo.png)
 
-### Acceptance Criteria
+First, create a component called _AccordionSection_.
 
-<ol>
-  <li>An accordion with three sections.</li>
-  <li>The middle (second) section should be expanded; the rest should be collapsed.</li>
-  <li>Use conditional rendering to solve this problem.</li>
-  <li>Loop through the contents of the file <code>src/content/accordion.js</code> to generate the sections.</li>
-</ol>
+- Create a component named _AccordionSection_.
+- It should render one of the sample HTML snippets below.
+- It should receive _isOpen_ (a boolean), _title_, and _content_ as props.
+- If _isOpen_ is true, render the expanded snippet. If false, render the collapsed snippet.
+
+Second, update _App.jsx_.
+
+- Import _AccordionSection_ in your _App.jsx_ file.
+- Create an accordion with three sections using _AccordionSection_.
+- Only the middle section should be expanded.
+- Loop through the contents of the file _src/content/accordion.js_ to generate the sections.
+
+## Acceptance Criteria
+
+- You have an accordion with three sections.
+- The middle (second) section should be expanded, while the rest of the sections should be collapsed.
+- Use conditional rendering to solve this problem.
+- You looped through the contents of the file _src/content/accordion.js_ to generate the sections.
 
 ## Sample HTML
 
-This is sample HTML if a section is expanded. (You will need to convert this to JSX.)
+This is sample HTML if a section is expanded. (You will need to convert this to JSX.) Pay attention to the classes.
 
 ```html
 <div class="title active">
@@ -81,7 +71,7 @@ This is sample HTML if a section is expanded. (You will need to convert this to 
 </div>
 ```
 
-Here is sample HTML for a section that is collapsed. (You will need to convert this to JSX.)
+Here is sample HTML for a section that is collapsed. (You will need to convert this to JSX.) Pay attention to the classes.
 
 ```html
 <div class="title">

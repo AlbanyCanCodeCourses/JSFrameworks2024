@@ -1,10 +1,10 @@
-# State Challenge
+# State with Text Inputs Challenge
 
 In Visual Studio code, press `command+shift+v` (Mac) or `ctrl+shift+v` (Windows) to open a Markdown preview.
 
 ## Reason for the Challenges
 
-Managing state is often a source of headache for many developers. In these next few challenges will help you improve your ability to manage your app's state.
+Much of web development is working with forms. In this exercise, you will learn how to work with user input in React. You will handle text from textboxes.
 
 ## Getting Started
 
@@ -71,5 +71,7 @@ If the guess is too low or too high, the correct number is revealed in the feedb
 If the guess is correct, a message indicating the user's victory is displayed.
 
 You must use the `useState()` hook to solve this problem.
+
+You must use _controlled inputs_ to solve this problem.
 
 ![](GuessTheNumber.png)

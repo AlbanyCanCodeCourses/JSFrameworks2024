@@ -3,7 +3,7 @@ const Me = ({ name }) => {
     return (
         <>
             <div>
-                My Name is {name}</div>
+                <h1>My Name is {name}</h1></div>
         </>
     );
 }

@@ -1,7 +1,7 @@
 import Cats from "./components/Cats/Cats";
 import SingleParentElement from "./components/SingleParentElement/SingleParentElement";
 import Person from "./components/Person/Person";
-import Me from "./components/Me/Me.jsx";
+import Me from "./components/Me/Me";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Person />
       </div>
       <div className="pt-3 pb-3">
-        <Me name="parvinder" />
+        <Me />
       </div>
     </div>
   );

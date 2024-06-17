@@ -8,7 +8,7 @@ function App() {
     {content.map((content) => (
       <AccordionSection
         title={content.title}
-        content={content.content}
+        content={content.paragraph || content.content}
         isOpen={content.isOpen}
       />
     ))}

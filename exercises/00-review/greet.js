@@ -1,3 +1,5 @@
-export const greet = (name) => {
+const greet = (name) => {
   return `Hello ${name}!`;
 };
+
+export default greet;

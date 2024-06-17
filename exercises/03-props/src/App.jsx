@@ -1,12 +1,12 @@
 import "./App.css";
 import Welcome from "./Welcome";
+import Heading from "./Heading";
 
 function App() {
   return (
     <div className="App">
-      <h1>Welcome to my React App!</h1>
+      <Heading>Welcome to my React App!</Heading>
       <Welcome name="Chris" />
-      <Welcome />
     </div>
   );
 }

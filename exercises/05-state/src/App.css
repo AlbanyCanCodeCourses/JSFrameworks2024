@@ -1,3 +1,26 @@
 /**
  * Write your CSS here
  */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+div.btn-container {
+  display: flex;
+  gap: 1rem;
+
+  & button {
+    border-radius: 4px;
+    padding: 4px 8px;
+  }
+
+  & button.expand-btn {
+    background-color: wheat;
+  }
+
+  & button.collapse-btn {
+    background-color: lavenderblush;
+  }
+}

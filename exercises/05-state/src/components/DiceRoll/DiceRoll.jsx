@@ -18,7 +18,12 @@ function DiceRoller() {
    * Refactor me. How can we make this update
    * after the user clicks on the "Roll" button?
    */
-  const diceNumber = generateRandomDiceNumber();
+  const [diceNumber, setDiceNumber] = useState(1);
+  
+  const rollDice = () => {
+    const newDiceNumber = generateRandomDiceNumber();
+    setDiceNumber(newDiceNumber);
+  };
 
   /**
    * Using "diceNumber", this selects a dice image.
@@ -36,7 +41,7 @@ function DiceRoller() {
           )}
           <div>
             {/* Complete me. When the user clicks on the button below, it should "roll the dice". */}
-            <button className="btn btn-primary btn-sm">Roll</button>
+            <button onClick={rollDice} className="btn btn-primary btn-sm">Roll</button>
           </div>
         </h1>
       </div>

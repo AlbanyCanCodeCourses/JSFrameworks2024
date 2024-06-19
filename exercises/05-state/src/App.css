@@ -24,3 +24,9 @@ div.btn-container {
     background-color: lavenderblush;
   }
 }
+
+h1.p-2.h3,
+h1.p-2.h3>div {
+  display: grid;
+  place-items: center;
+}

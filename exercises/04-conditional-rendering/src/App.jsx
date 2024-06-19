@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import AccordionSection from "./AccordionSection";
-import { content } from "./content/accordion";
+import { content } from "./content/accordion.js";
 
 function App() {
   return <div className="ui styled accordion">

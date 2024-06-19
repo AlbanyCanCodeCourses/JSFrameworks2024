@@ -1,4 +1,4 @@
-export default function AccordionSection(props) {
+export default function AccordionSection() {
   return (
     <>
       <div className={props.isOpen ? "title active" : "title"}>

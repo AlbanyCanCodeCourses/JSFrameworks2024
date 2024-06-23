@@ -7,7 +7,7 @@ In Visual Studio code, press `command+shift+v` (Mac) or `ctrl+shift+v` (Windows)
 Using your command line, you will need to navigate to the this folder, install all dependencies, and start the app.
 
 ```bash
-cd exercises/06-forms/
+cd exercises/07-forms/
 code . # if you would like to open this in a separate VSCode window
 npm install
 npm start

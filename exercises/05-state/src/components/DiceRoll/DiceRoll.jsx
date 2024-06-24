@@ -4,6 +4,7 @@ import dice3 from "./dice3.svg";
 import dice4 from "./dice4.svg";
 import dice5 from "./dice5.svg";
 import dice6 from "./dice6.svg";
+import { useState } from "react";
 
 const images = { dice1, dice2, dice3, dice4, dice5, dice6 };
 

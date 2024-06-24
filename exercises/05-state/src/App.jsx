@@ -2,8 +2,8 @@ import "./App.css";
 import DiceRoller from "./components/DiceRoll/DiceRoll";
 import LessText from "./components/LessText/LessText";
 import Subscribe from "./components/Subscribe/Subscribe";
-import CharacterCount from "../../06-text-input/src/components/CharacterCount";
-import GuessTheNumber from "../../06-text-input/src/components/GuessTheNumber";
+import CharacterCount from "../../06-text-input/src/components/CharacterCount/CharacterCount";
+import GuessTheNumber from "../../06-text-input/src/components/GuessTheNumber/GuessTheNumber";
 
 function App() {
   const sampleLoremText = "Praesent metus diam, laoreet non quam eu, luctus maximus ante. Donec lorem nisl, fermentum ac eros in, feugiat lacinia est. Phasellus dictum nunc eget ligula euismod efficitur.";

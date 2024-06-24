@@ -13,19 +13,26 @@ function App() {
         <h1 className="h3">Challenge 1 - Less Text</h1>
         <LessText text={sampleLoremText} maxLength={30} />
       </div>
-      <div className="pt-4 pb-4 mb-4">
+      <div className="bg-secondary text-white pt-4 pb-4 mb-4">
         <div className="container">
           <h1 className="h3">Challenge 2 - Dice Roll</h1>
           <DiceRoller />
         </div>
       </div>
       <div className="container pt-4 pb-4">
-        <Subscribe />
+        <div className="container">
+          <h1 className="h3">Challenge 3 - Subscribe Button</h1>
+          <Subscribe />
+        </div>
       </div>
-      <div className="container pt-4 pb-4">
-        <CharacterCount />
+      <div className="bg-secondary text-white pt-4 pb-4 mb-4">
+        <div className="container">
+          <h1 className="h3">Challenge 4 - Character Count</h1>
+          <CharacterCount />
+        </div>
       </div>
-      <div className="container pt-4 pb-4">
+      <div className="container">
+        <h1 className="h3">Challenge 5 - Guessing The Number</h1>
         <GuessTheNumber />
       </div>
     </>

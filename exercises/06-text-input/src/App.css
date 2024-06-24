@@ -8,20 +8,29 @@
   padding: 0;
 }
 
-#root div.container:nth-child(1) {
+#root div.container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-#root div.container:nth-child(1)>p>span[textstatus="unchanged"] {
-  font-weight: normal;
+#root div.container:nth-child(1)>p {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
-#root div.container:nth-child(1)>p>span[textstatus="changed"] {
+#root div.container:nth-child(1)>p>span {
   font-weight: bold;
+  font-size: 1.075rem;
 }
 
-#char-count {
+#char-count-input {
   padding: 0.5rem 1rem;
+}
+
+button {
+  background-color: #efefef;
+  font-weight: 500;
+  padding-inline: 4px;
 }

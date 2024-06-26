@@ -1,7 +1,25 @@
 import "./App.css";
-// Import here
+// Import here"
+import {useState} from "react";
+import states from "./assets/states.json"
+import countries from "./assets/countries.json"
 
 function App() {
+
+  const [States, setStates] = useState([]);
+  const [Countries, setCountries] = useState([]);
+  const [firstName,setFirstName]= useState ([]);
+  const [lastName,setLastName]=useState([]);
+  const [address, setAddress]=useState([]);
+  const [city,setCity]=useState([]);
+  const [zipcode,setZipcode]=useState([]);
+  const [newsletter, setNewsletter]=useState([]);
+  const [isSubmitted, setIsSubmitted] = useState([]);
+
+  const handledSubmit = (e) => (e.preventDefault());
+  setIsSubmitted (true);
+
+
   return (
     <form className="container mt-4" method="POST">
       {/* You will need to handle form submission */}
@@ -14,6 +32,8 @@ function App() {
           name="firstName"
           type="text"
           className="form-control"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
         />
       </div>
       <div className="mb-3">
@@ -25,6 +45,8 @@ function App() {
           name="lastName"
           type="text"
           className="form-control"
+          value={lastName}
+          onChange = {(e) => setLastName(e.target.value)}
         />
       </div>
       <div className="mb-3">
@@ -36,6 +58,8 @@ function App() {
           name="addressLine1"
           type="text"
           className="form-control"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
         />
         <p className="help-block text-muted">
           Street Address, P.O. Box, Company Name, C/O
@@ -46,14 +70,27 @@ function App() {
         <label htmlFor="city" className="control-label">
           City / Town
         </label>
-        <input id="city" name="city" type="text" className="form-control" />
+        <input id="city" 
+        name="city" 
+        type="text" 
+        className="form-control"
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
+        />
       </div>
       <div className="mb-3">
         <label htmlFor="state" className="control-label">
           State / Province / Region
         </label>
         {/* Loop through the states you imported here */}
-        <select id="state" name="state" className="form-control" />
+        <select id="state" name="state" className="form-control" value={states}
+          onChange={(e) => setStates(e.target.value)} >
+        {states.map((state) => (
+            <option key={state} value={state}>
+              {state}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div className="mb-3">
@@ -65,6 +102,8 @@ function App() {
           name="postalCode"
           type="text"
           className="form-control"
+          value={zipcode}
+          onChange={e => setZipcode(e.target.value)}
         />
       </div>
 
@@ -73,7 +112,14 @@ function App() {
           Country
         </label>
         {/* Loop through the countries you imported here */}
-        <select id="country" name="country" className="form-control" />
+        <select id="country" name="country" className="form-control" value={countries}
+          onChange={(e) => setCountries (e.target.value)}>
+        {countries.map((country) => (
+            <option key={country} value={country}>
+              {country}
+            </option>
+          ))}
+          </select>
       </div>
       <div className="mb-3 form-check">
         <input
@@ -81,6 +127,9 @@ function App() {
           name="signUpForNewsLetter"
           type="checkbox"
           className="form-check-input"
+          value={newsletter}
+          onChange={(e) => setNewsletter(e.target.checked)}
+         
         />
         <label htmlFor="signUpForNewsLetter" className="form-check-label">
           Sign Up For Newsletter
@@ -94,11 +143,18 @@ function App() {
        * Find a way to only display this once the form has been submitted.
        * Hint: You will need to change "false" below with something else
        */}
-      {false && (
+      {isSubmitted && (
         <div className="card card-body bg-light mt-4 mb-4">
           Results:
           <ul className="list-unstyled mb-0">
             {/* Add <li></li> tags here */}
+            <li>First Name {firstName}</li>;
+            <li>Last Name {lastName}</li>;
+            <li>Address {address}</li>
+            <li>City {city}</li>
+            <li>State {states}</li>
+            <li>Country {countries}</li>
+            <li>Zipcode {zipcode}</li>
           </ul>
         </div>
       )}

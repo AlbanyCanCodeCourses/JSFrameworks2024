@@ -16,7 +16,13 @@ const Cats = () => {
       <ul className="list-unstyled">
         {catLinkImages.map((cat) => (
           <li key={cat} className="d-inline">
-            <img src={cat} alt={"pictures of cats"} width="200" className="img-fluid img-thumbnail">
+            <img
+              src={cat}
+              alt={"pictures of cats"}
+              width="200"
+              className="img-fluid img-thumbnail"
+            />
+            {/* Changed the closing ">" to "/>" on the line above */}
           </li>
         ))}
       </ul>

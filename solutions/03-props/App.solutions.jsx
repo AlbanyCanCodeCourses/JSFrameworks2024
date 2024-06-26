@@ -1,6 +1,6 @@
 import "./App.css";
 import Welcome from "./components/Welcome/Welcome";
-import Heading from "./components/Heading/Heading";
+import Heading from "../../exercises/03-props/src/Heading";
 
 function App() {
   return (

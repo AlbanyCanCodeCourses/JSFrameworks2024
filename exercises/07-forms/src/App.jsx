@@ -1,5 +1,4 @@
 import "./App.css";
-// Import here
 import { useState } from "react";
 import countries from "./assets/countries.json";
 import states from "./assets/states.json";
@@ -22,7 +21,6 @@ function App() {
 
   return (
     <form className="container mt-4" method="POST" onSubmit={handleSubmit}>
-      {/* You will need to handle form submission */}
       <div className="mb-3">
         <label htmlFor="firstName" className="control-label">
           First Name
@@ -76,7 +74,6 @@ function App() {
         <label htmlFor="state" className="control-label">
           State / Province / Region
         </label>
-        { /* Loop through the states you imported here */}
         <select id="state" name="state" className="form-control" value={province} onChange={e => setProvince(e.target.value)}>
           {states.map((state, index) =>
             <option key={index} value={state}>{state}</option>
@@ -102,7 +99,6 @@ function App() {
         <label htmlFor="country" className="control-label">
           Country
         </label>
-        {/* Loop through the countries you imported here */}
         <select id="country" name="country" className="form-control" value={nation} onChange={e => setNation(e.target.value)}>
           {countries.map((country, index) =>
             <option key={index} value={country}>{country}</option>
@@ -126,10 +122,6 @@ function App() {
         Submit
       </button>
 
-      {/*
-       * Find a way to only display this once the form has been submitted.
-       * Hint: You will need to change "false" below with something else
-       */}
       {submitted && (
         <div className="card card-body bg-light mt-4 mb-4">
           Results:

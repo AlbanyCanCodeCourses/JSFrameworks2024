@@ -6,6 +6,7 @@ import "./App.css";
 const GroceryList = () => {
   const [groceryName, setGroceryName ] = useState("")
   const [groceryCost, setGroceryCost] = useState(Number(0));
+  const [totalCost, setTotal] = useState(Number(0));
 
   const [list, setList] = useState([
     { groceryName: "Bananas", cost: 5.99 },
@@ -19,7 +20,7 @@ const GroceryList = () => {
     setTotal(sum(totalCost + newItem.cost));
   }
 
-  const totalCost = list.reduce((totalCost, grocery) => totalCost + grocery.cost, 0);
+  setTotal(list.reduce((totalCost, grocery) => totalCost + grocery.cost, 0));
 
   const clearList = () => {
     setList([]);

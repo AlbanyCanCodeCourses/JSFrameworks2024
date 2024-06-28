@@ -11,7 +11,7 @@
   max-width: 600px;
 }
 
-strong span {
+p.lead span {
   font-weight: 700;
 }
 
@@ -46,7 +46,6 @@ table button {
   background: none;
 }
 
-tr:hover {
-  background-color: rgb(222, 226, 230);
-  color: white;
+table button:hover {
+  background-color: rgba(33, 29, 20, 0.25);
 }

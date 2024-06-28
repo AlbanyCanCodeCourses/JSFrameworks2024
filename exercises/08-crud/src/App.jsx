@@ -43,6 +43,8 @@ const GroceryList = () => {
   const removeItem = e => {
     const itemIndex = Number(e.target.attributes.position.value);
     setItemList(itemList.filter((itemObj, index) => index !== itemIndex));
+    if (itemList.length === 0) setTotal(0);
+    else setTotal(o => o - itemList[itemIndex].cost)
   }
 
   const clearItems = () => {
@@ -55,6 +57,10 @@ const GroceryList = () => {
       <div className="card card-body bg-light mb-2">
         <form method="POST" className={`row g-3 ${validated ? 'was-validated' : ''}`} onSubmit={submitHandler} noValidate>
           <div className="col">
+            <span
+              className="prefix-symbol">
+              &#9998;
+            </span>
             <input
               className="form-control"
               type="text"
@@ -69,6 +75,10 @@ const GroceryList = () => {
             }
           </div>
           <div className="col">
+            <span
+              className="prefix-symbol">
+              $
+            </span>
             <input
               className="form-control"
               type="number"
@@ -141,7 +151,7 @@ const GroceryList = () => {
           </tbody>
         </table>
         <p className="lead">
-          <strong>Total Cost: ${total.toFixed(2)}</strong>
+          <strong>Total Cost: <span>${total.toFixed(2)}</span></strong>
         </p>
         <div className="d-flex justify-content-end">
           <button

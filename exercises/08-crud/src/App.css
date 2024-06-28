@@ -1,3 +1,13 @@
 .container {
   max-width: 600px;
 }
+
+strong span {
+  font-weight: 700;
+}
+
+table button {
+  border: none;
+  border-radius: 50%;
+  background: none;
+}

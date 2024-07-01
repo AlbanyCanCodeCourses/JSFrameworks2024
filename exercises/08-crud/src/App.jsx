@@ -52,7 +52,6 @@ const GroceryList = () => {
 
   // Helper functions
   const addItem = () => {
-    console.log(price, typeof (+price));
     setValidated(true); // Update form submission status
     if (item !== '' && price !== '') { // If both grocery item input & grocery price input contain non-empty values..
       setItemList([...itemList, { // Update state to represent prior grocery list [array] in addition to the new item being added

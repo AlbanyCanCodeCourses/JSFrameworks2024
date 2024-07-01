@@ -1,4 +1,4 @@
-export const content = [
+/*export const content = [
   {
     title: "What is React used for?",
     paragraph:
@@ -17,4 +17,4 @@ export const content = [
       "The Best Guide to Know What Is React [Updated] React is a JavaScript-based UI development library. Facebook and an open-source developer community run it. Although React is a library rather than a language, it is widely used in web development. The library first appeared in May 2013 and is now one of the most commonly used frontend libraries for web development.",
     isOpen: false,
   },
-];
+];*/

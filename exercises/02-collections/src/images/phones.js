@@ -3,3 +3,8 @@ export const phones = {
   2: "https://live.staticflickr.com/1005/1436934834_e2bf5a8a2c_b.jpg",
   3: "https://live.staticflickr.com/1821/29532846248_e377e4a2ab.jpg",
 };
+const phonesA = object.values(phones);
+
+console.log(phonesA);
+
+export default App;

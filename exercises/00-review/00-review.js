@@ -1,3 +1,4 @@
+import greet from "./greet.js";
 /**
  * Solve this problem using ES modules (ESM).
  * ES modules allow you break up your code into multiple files (or modules), and then share code between different files.
@@ -33,6 +34,11 @@ const greet = (name) => {
 
 const highestNumber = (array) => {
   // Write your answer here
+  let highestNum = array[0];
+  for ( let i = 0; i < array.length; i++) {
+    if (array[i] > highestNum) highestNum = array[i];
+  }
+  return highestNum;
 };
 
 /**
@@ -46,6 +52,7 @@ const highestNumber = (array) => {
 
 const combineArray = (array1, array2) => {
   // Write your answer here
+  return [...array1, ...array2];
 };
 
 /**
@@ -57,6 +64,7 @@ const combineArray = (array1, array2) => {
 
 const combineObject = (obj1, obj2) => {
   // Write your answer here
+  return { ...obj1, ...obj2};
 };
 
 /**
@@ -68,6 +76,7 @@ const combineObject = (obj1, obj2) => {
 
 const doubleValues = (arr) => {
   // Write your answer here
+  return arr.map((num) => num * 2);
 };
 
 /**
@@ -81,6 +90,7 @@ const doubleValues = (arr) => {
  */
 const onlyEvenValues = (arr) => {
   // Write your answer here
+  return arr.filter((arr) => arr % 2 === 0);
 };
 
 /**
@@ -103,6 +113,7 @@ const onlyEvenValues = (arr) => {
  */
 const removeVowels = (str) => {
   // Write your answer here
+  return str.toLowerCase().replace(/[aeiou]/g, "");
 };
 
 /**
@@ -140,7 +151,7 @@ const getTempOfTomorrow = () => {
   };
 
   // Start of what you should change
-  const today = AVG_TEMPERATURES.today;
+  const {today, tommorrow} = AVG_TEMPERATURES;
   const tomorrow = AVG_TEMPERATURES.tomorrow;
   // End of what you should change
   return `Today's temperature is ${today}.\nTomorrow's temperature is ${tomorrow}`;
@@ -159,6 +170,7 @@ const getTempOfTomorrow = () => {
  */
 const addItems = (arr) => {
   // Write your answer here
+  return arr.reduce((sum, num) => sum + num);
 };
 
 /**
@@ -175,6 +187,7 @@ const addItems = (arr) => {
 const removeDuplicates = (array) => {
   // Write your answer here
   // Return an array of unique values
+  return [...new Set(array)];
 };
 
 /**

@@ -1,14 +1,18 @@
 import "./App.css";
-// Import here
+import { useState } from React;
+import { countries} from assets;
+import { states } from assets;
 
 function App() {
+  const [countries, country] = useState ("");
+  const [states, state] = useState ("");
+  const []
   return (
     <form className="container mt-4" method="POST">
       {/* You will need to handle form submission */}
       <div className="mb-3">
         <label htmlFor="firstName" className="control-label">
           First Name
-        </label>
         <input
           id="firstName"
           name="firstName"
@@ -52,7 +56,11 @@ function App() {
         <label htmlFor="state" className="control-label">
           State / Province / Region
         </label>
-        {/* Loop through the states you imported here */}
+        {states.map((state) => (
+            <option key={state} value={state}>
+              {state}
+            </option>
+          ))}
         <select id="state" name="state" className="form-control" />
       </div>
 
@@ -72,7 +80,11 @@ function App() {
         <label htmlFor="country" className="control-label">
           Country
         </label>
-        {/* Loop through the countries you imported here */}
+        {countries.map((country) => (
+            <option key={country} value={country}>
+              {country}
+            </option>
+          ))}
         <select id="country" name="country" className="form-control" />
       </div>
       <div className="mb-3 form-check">

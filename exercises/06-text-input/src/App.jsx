@@ -1,6 +1,7 @@
 import "./App.css";
 
 // Import CharacterCount here
+import CharacterCount from "./components/CharacterCount/CharacterCount";
 
 //Import GuessTheNumber
 
@@ -11,6 +12,7 @@ function App() {
         <div className="container">
           <h1 className="h3">Challenge 2 - Character Count</h1>
           {/* Add CharacterCount here */}
+          <CharacterCount />
         </div>
       </div>
       <div className="container">

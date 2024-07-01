@@ -4,6 +4,7 @@ import dice3 from "./dice3.svg";
 import dice4 from "./dice4.svg";
 import dice5 from "./dice5.svg";
 import dice6 from "./dice6.svg";
+import { useState } from "react";
 
 const images = { dice1, dice2, dice3, dice4, dice5, dice6 };
 
@@ -18,7 +19,12 @@ function DiceRoller() {
    * Refactor me. How can we make this update
    * after the user clicks on the "Roll" button?
    */
-  const diceNumber = generateRandomDiceNumber();
+//  const diceNumber = generateRandomDiceNumber();
+
+  const [diceNumber, setDiceNumber] = useState(generateRandomDiceNumber());
+  const diceRoll = () => {
+    setDiceNumber(generateRandomDiceNumber());
+  }
 
   /**
    * Using "diceNumber", this selects a dice image.
@@ -36,7 +42,7 @@ function DiceRoller() {
           )}
           <div>
             {/* Complete me. When the user clicks on the button below, it should "roll the dice". */}
-            <button className="btn btn-primary btn-sm">Roll</button>
+            <button className="btn btn-primary btn-sm" onClick={diceRoll}>Roll</button>
           </div>
         </h1>
       </div>

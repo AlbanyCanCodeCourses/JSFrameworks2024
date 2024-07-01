@@ -1,3 +1,4 @@
+import greet from "./greet.js";
 /**
  * Solve this problem using ES modules (ESM).
  * ES modules allow you break up your code into multiple files (or modules), and then share code between different files.
@@ -33,6 +34,14 @@ const greet = (name) => {
 
 const highestNumber = (array) => {
   // Write your answer here
+  let highestNum = array[0];
+
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] > highestNum) {
+      highestNum = array[i];
+    }
+  }
+  return highestNum;
 };
 
 /**
@@ -46,6 +55,7 @@ const highestNumber = (array) => {
 
 const combineArray = (array1, array2) => {
   // Write your answer here
+  return [ ...array1, ...array2 ];
 };
 
 /**
@@ -57,6 +67,7 @@ const combineArray = (array1, array2) => {
 
 const combineObject = (obj1, obj2) => {
   // Write your answer here
+  return { ...obj1, ...obj2 };
 };
 
 /**
@@ -68,6 +79,7 @@ const combineObject = (obj1, obj2) => {
 
 const doubleValues = (arr) => {
   // Write your answer here
+  return arr.map(newNum => newNum * 2);
 };
 
 /**
@@ -81,6 +93,7 @@ const doubleValues = (arr) => {
  */
 const onlyEvenValues = (arr) => {
   // Write your answer here
+  return arr.filter(arr => arr % 2 === 0);
 };
 
 /**
@@ -103,6 +116,7 @@ const onlyEvenValues = (arr) => {
  */
 const removeVowels = (str) => {
   // Write your answer here
+  return str.replace(/[aeiouAEIOU]/g, "").toLowerCase();
 };
 
 /**
@@ -115,7 +129,8 @@ const getIsHungryText = () => {
   //don't change this variable
   let isStomachEmpty = false;
   /* convert this if else statement into a ternary expression */
-
+  let isHungry;
+  isStomachEmpty === true ? isHungry = "Go eat something." : isHungry = "Keep coding!";
   // let isHungry;
   // if (isStomachEmpty) {
   //   isHungry = "Go eat something.";
@@ -140,8 +155,7 @@ const getTempOfTomorrow = () => {
   };
 
   // Start of what you should change
-  const today = AVG_TEMPERATURES.today;
-  const tomorrow = AVG_TEMPERATURES.tomorrow;
+  const { today, tomorrow } = AVG_TEMPERATURES;
   // End of what you should change
   return `Today's temperature is ${today}.\nTomorrow's temperature is ${tomorrow}`;
 };
@@ -159,6 +173,7 @@ const getTempOfTomorrow = () => {
  */
 const addItems = (arr) => {
   // Write your answer here
+  return arr.reduce((num, value) => num + value, 0);
 };
 
 /**
@@ -175,6 +190,7 @@ const addItems = (arr) => {
 const removeDuplicates = (array) => {
   // Write your answer here
   // Return an array of unique values
+  return [...new Set(array)];
 };
 
 /**

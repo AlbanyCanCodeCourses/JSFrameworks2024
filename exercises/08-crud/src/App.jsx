@@ -83,7 +83,9 @@ const GroceryList = () => {
   }
 
   const clearItems = () => {
-    setItemList([]); // Reset grocery list array to 
+    setItem('');
+    setPrice('');
+    setItemList([]);
     setTotal(0);
     updateLocalStorage([], 0);
   }

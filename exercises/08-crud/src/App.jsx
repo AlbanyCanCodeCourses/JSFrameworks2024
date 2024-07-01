@@ -2,55 +2,94 @@
 import { useState } from "react";
 import "./App.css";
 
+
+
 const GroceryList = () => {
-  const [item, setItem] = useState('');
-  const [price, setPrice] = useState('');
-  const [itemList, setItemList] = useState([]);
-  const [total, setTotal] = useState(0);
-  const [validated, setValidated] = useState(false);
+  // Local storage callbacks & helper functions
+  const loadLocalStorageList = () => {
+    const listInStorage = localStorage.list;
+    if (typeof listInStorage === "undefined") return [];
+    else return JSON.parse(localStorage.getItem('list'));
+  }
+
+  const loadLocalStorageTotal = () => {
+    const totalInStorage = localStorage.total;
+    if ((typeof totalInStorage === "undefined") || (+(totalInStorage) === 0)) return 0;
+    else return parseFloat(JSON.parse(localStorage.getItem('total')));
+  }
+
+  const updateLocalStorage = (list, total) => {
+    localStorage.setItem("list", JSON.stringify(list));
+    localStorage.setItem("total", JSON.stringify(total));
+  }
+
+  // State variable declarations
+  const [item, setItem] = useState(''); // Item name - str
+  const [price, setPrice] = useState(''); // Item price - str
+  const [itemList, setItemList] = useState(loadLocalStorageList); // Item list - obj array
+  const [total, setTotal] = useState(loadLocalStorageTotal); // Item list total cost - number
+  const [validated, setValidated] = useState(false); // Form status - bool
+  // [true] - form status adding/attempting to add item --- [false] - default form status/form status after processing add item event
 
   // Event handlers
   const submitHandler = e => {
-    e.preventDefault();
+    e.preventDefault(); // Prevents page reload
   }
 
   const controlsChangeHandler = e => {
-    if (e.target.type === 'text') setItem(e.target.value);
-    else if (e.target.type === 'number') setPrice(e.target.value);
+    if (e.target.type === 'text') setItem(e.target.value); // Targets grocery name input
+    else if (e.target.type === 'number') setPrice(e.target.value); // Targets grocery price input
     setValidated(false);
   }
 
   const clickHandler = e => {
-    if (e.target.type === 'submit') addItem();
-    else if (e.target.title.value === 'delete') removeItem(e);
-    else if (e.target.type === 'button') clearItems();
+    if (e.target.type === 'submit') addItem(); // Targets 'Add' button
+    else if (e.target.title.value === 'delete') removeItem(e); // Targets each list item's 'x' or delete button
+    else if (e.target.type === 'button') clearItems(); // Targets 'Clear' button
   }
 
-  // Helper functions
 
+
+  // Helper functions
   const addItem = () => {
-    setValidated(true);
-    if (item !== '' && price !== '') {
-      setItemList([...itemList, {
+    console.log(price, typeof (+price));
+    setValidated(true); // Update form submission status
+    if (item !== '' && price !== '') { // If both grocery item input & grocery price input contain non-empty values..
+      setItemList([...itemList, { // Update state to represent prior grocery list [array] in addition to the new item being added
         name: item,
         cost: price
       }]);
-      setTotal(o => o + Number(price));
+      setTotal(o => o + (+price)); // Pass an updater function to setTotal to update the total cost for the active render instead of the next render
       setValidated(false);
+
+      updateLocalStorage([...itemList, {
+        name: item,
+        cost: price
+      }], (total + (+price)).toFixed(2));
     }
   }
 
   const removeItem = e => {
-    const itemIndex = Number(e.target.attributes.position.value);
-    setItemList(itemList.filter((itemObj, index) => index !== itemIndex));
-    if (itemList.length === 0) setTotal(0);
-    else setTotal(o => o - itemList[itemIndex].cost)
+    const itemIndex = Number(e.target.attributes.position.value); // Grabs value of 'position' attribute for delete button of grocery item targeted --- this represents the index of the targeted item in the grocery list array
+    const newItemList = itemList.filter((itemObj, index) => index !== itemIndex); // Filter array to only contain elements which do not have the same index position as the grocery item targeted
+    setItemList(newItemList);
+    if (itemList.length === 1) { // If itemList of active render (the render as removeItem is being fired) only has 1 element, than itemList will be empty on next render (render following the removeItem being fired) so setTotal (reset 'total' state) to 0
+      setTotal(0);
+      updateLocalStorage([], 0);
+    }
+    else { // Otherwise, pass an updater function to update the total cost for active render
+      setTotal(o => o - itemList[itemIndex].cost);
+      updateLocalStorage(newItemList, (total - parseFloat(itemList[itemIndex].cost)).toFixed(2));
+    }
   }
 
   const clearItems = () => {
-    setItemList([]);
+    setItemList([]); // Reset grocery list array to 
     setTotal(0);
+    updateLocalStorage([], 0);
   }
+
+
 
   return (
     <div className="container">
@@ -128,17 +167,17 @@ const GroceryList = () => {
              *   </td>
              * </tr>
              */
-              itemList.map(itemObj => {
-                const itemObjKey = itemList.indexOf(itemObj);
+              itemList.map(itemObj => { // Iterate through obj array to render grocery items to screen
+                const itemObjKey = itemList.indexOf(itemObj); // Grab each itemObj index within array...
                 return (
-                  <tr key={itemObjKey}>
+                  <tr key={itemObjKey /* ...and set both the containing table row's "key" attribute... */}>
                     <td>{itemObj.name}</td>
-                    <td>${itemObj.cost}</td>
+                    <td>${parseFloat(itemObj.cost).toFixed(2)}</td>
                     <td>
                       <button
                         aria-label="Delete"
                         title="Delete"
-                        position={itemObjKey}
+                        position={itemObjKey /* ...as well as the child button's "position" attribute to this value */}
                         onClick={removeItem}
                       >
                         &times;
@@ -151,7 +190,7 @@ const GroceryList = () => {
           </tbody>
         </table>
         <p className="lead">
-          <strong>Total Cost: <span>${total.toFixed(2)}</span></strong>
+          <strong>Total Cost: ${total.toFixed(2)}</strong>
         </p>
         <div className="d-flex justify-content-end">
           <button

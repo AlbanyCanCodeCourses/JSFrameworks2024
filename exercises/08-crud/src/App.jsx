@@ -1,15 +1,47 @@
-// Import something here
 import "./App.css";
+import { useState } from "react";
 
 const GroceryList = () => {
+  const [groceryList, setGroceryListItem] = useState([
+    { groceryItem: 'Lettuce', price: '5.00' },
+    { groceryItem: 'Milk', price: '25.00'},
+    { groceryItem: 'Cheese', price: '3.99' }
+  ]);
+
+  const [newItem, setNewItem] = useState('');
+  const [newPrice, setNewPrice] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (newItem && newPrice) {
+      const formattedPrice = parseFloat(newPrice).toFixed(2);
+      setGroceryListItem([...groceryList, { groceryItem: newItem, price: formattedPrice }]);
+      setNewItem('');
+      setNewPrice('');
+    }
+  };
+
+  const handleDelete = (index) => {
+    const updatedGroceryList = groceryList.filter((_, i) => i !== index);
+    setGroceryListItem(updatedGroceryList);
+  };
+
+  const handleClear = () => {
+    setGroceryListItem([]);
+  };
+
+  const totalCost = groceryList.reduce((total, item) => total + parseFloat(item.price), 0).toFixed(2);
+
   return (
     <div className="container">
       <div className="card card-body bg-light mb-2">
-        <form method="POST" className="row g-3">
+        <form method="POST" className="row g-3" onSubmit={handleSubmit}>
           <div className="col">
             <input
               className="form-control"
               type="text"
+              value={newItem} 
+              onChange={(e) => setNewItem(e.target.value)} 
               placeholder="Name of grocery item..."
               aria-label="Name of grocery item..."
             />
@@ -20,6 +52,8 @@ const GroceryList = () => {
               type="number"
               min="0"
               step=".01"
+              value={newPrice} 
+              onChange={(e) => setNewPrice(e.target.value)} 
               placeholder="Cost of grocery item..."
               aria-label="Cost of grocery item..."
             />
@@ -42,26 +76,24 @@ const GroceryList = () => {
             </tr>
           </thead>
           <tbody>
-            {/**
-             * Complete me. (You can use something else instead of a table if you like)
-             * @example
-             * <tr>
-             *   <td>Toilet Paper</td>
-             *   <td>$1.99</td>
-             *   <td>
-             *     <button aria-label="Delete" title="Delete" ... >
-             *       &times;
-             *     </button>
-             *   </td>
-             * </tr>
-             */}
+            {groceryList.map((item, index) => (
+              <tr key={index}>
+                <td>{item.groceryItem}</td>
+                <td>{item.price}</td>
+                <td>
+                  <button aria-label="Delete" title="Delete" onClick={() => handleDelete(index)}>
+                    &times;
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
         <p className="lead">
-          <strong>Total Cost: {/* Complete me */}</strong>
+          <strong>Total Cost: ${totalCost}</strong>
         </p>
         <div className="d-flex justify-content-end">
-          <button type="button" className="btn btn-outline-success">
+          <button type="button" className="btn btn-outline-success" onClick={handleClear}>
             Clear
           </button>
         </div>

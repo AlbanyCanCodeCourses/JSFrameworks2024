@@ -14,7 +14,7 @@ function App() {
     state: '',
     postalCode: '',
     country: '',
-    signUpForNewsletter: false,
+    signUpForNewsLetter: false,
   });
 
   // handle the change
@@ -131,7 +131,7 @@ function App() {
           name="signUpForNewsLetter"
           type="checkbox"
           className="form-check-input"
-          checked={formField.newsletter}
+          checked={formField.newsLetter}
           onChange={handleChange}
         />
         <label htmlFor="signUpForNewsLetter" className="form-check-label">
@@ -149,7 +149,7 @@ function App() {
             <li>First Name: {formField.firstName}</li>
             <li>Last Name: {formField.lastName}</li>
             <li>Address: {formField.addressLine1}, {formField.city}, {formField.city}, {formField.state} {formField.postalCode}, {formField.country}</li>
-            <li>Newsletter: {formField.signUpForNewsletter ? "Thank you for signing up for our newsletter!" : "Please sign up for our newsletter."}</li>
+            <li>Newsletter: {formField.signUpForNewsLetter ? "Thank you for signing up for our newsletter!" : "Please sign up for our newsletter."}</li>
           </ul>
         </div>
       )}

@@ -1,55 +1,6 @@
-:root {
-  --formcontrol-default-inline-offset: 0.75rem;
-  --prefix-inline-offset: 0.25rem;
-  --prefix-vertical-offset: 1.425rem;
-
-  --name-inline-offset: 1.75rem;
-  --cost-inline-offset: calc(var(--formcontrol-default-inline-offset) + var(--prefix-inline-offset));
-}
-
+/* Provided Styles */
 .container {
   max-width: 600px;
 }
 
-input.form-control[type="text"] {
-  padding-inline-start: var(--name-inline-offset)
-}
-
-input.form-control[type="number"] {
-  padding-inline-start: var(--cost-inline-offset);
-}
-
-span.prefix-symbol {
-  line-height: 1.5;
-  font-size: 1rem;
-  font-weight: 600;
-  position: absolute;
-  top: var(--prefix-vertical-offset);
-  padding-inline-start: var(--prefix-inline-offset);
-
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  cursor: default;
-}
-
-table button {
-  border: none;
-  border-radius: 50%;
-  background: none;
-}
-
-table button:hover {
-  background-color: rgba(33, 29, 20, 0.175);
-}
-
-tbody tr:nth-child(even) td {
-  background-color: rgba(33, 29, 20, 0.125);
-}
-
-td span {
-  font-weight: 700;
-}
+/* Solution Styles */

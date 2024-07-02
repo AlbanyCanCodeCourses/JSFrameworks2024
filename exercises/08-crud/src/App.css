@@ -11,10 +11,6 @@
   max-width: 600px;
 }
 
-p.lead span {
-  font-weight: 700;
-}
-
 input.form-control[type="text"] {
   padding-inline-start: var(--name-inline-offset)
 }
@@ -47,5 +43,13 @@ table button {
 }
 
 table button:hover {
-  background-color: rgba(33, 29, 20, 0.25);
+  background-color: rgba(33, 29, 20, 0.175);
+}
+
+tbody tr:nth-child(even) td {
+  background-color: rgba(33, 29, 20, 0.125);
+}
+
+td span {
+  font-weight: 700;
 }

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import "./App.css";
 
+// Symbol component -- context symbols positioned inline to user input fields
 const PrefixSymbol = ({ symbolCode }) => {
   return (
     <span
@@ -12,6 +13,7 @@ const PrefixSymbol = ({ symbolCode }) => {
   )
 }
 
+// Row component -- rows representing individual items in grocery list
 const TableRow = ({ name, cost, id, onDelete }) => {
   return (
     <tr position={id}>
@@ -33,7 +35,7 @@ const TableRow = ({ name, cost, id, onDelete }) => {
 }
 
 
-
+// List component -- App parent component
 const GroceryList = () => {
   const [itemName, setItemName] = useState('');
   const [itemPrice, setItemPrice] = useState('');

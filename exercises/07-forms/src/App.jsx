@@ -112,7 +112,7 @@ function App() {
           type="checkbox"
           className="form-check-input"
           value={newsletter}
-          onChange={e => setNewsletter(true)}
+          onChange={e => setNewsletter(!newsletter)}
         />
         <label htmlFor="signUpForNewsLetter" className="form-check-label">
           Sign Up For Newsletter
@@ -135,7 +135,7 @@ function App() {
             <li>State: {province}</li>
             <li>Zip Code: {postalCode}</li>
             <li>Country: {nation}</li>
-            <p>{newsletter ? "Thanks for signing up for our newsletter!" : "Please sign up for our newsletter"}</p>
+            <p>{newsletter ? "Thanks for signing up for our newsletter!" : "Please sign up for our newsletter!"}</p>
           </ul>
         </div>
       )}

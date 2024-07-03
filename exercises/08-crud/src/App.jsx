@@ -4,16 +4,34 @@ import { useState } from "react";
 const GroceryList = () => {
   const [groceryList, setGroceryListItem] = useState([
     { groceryItem: 'Lettuce', price: '5.00' },
-    { groceryItem: 'Milk', price: '25.00'},
+    { groceryItem: 'Milk', price: '25.00' },
     { groceryItem: 'Cheese', price: '3.99' }
   ]);
 
   const [newItem, setNewItem] = useState('');
   const [newPrice, setNewPrice] = useState('');
+  const [itemError, setItemError] = useState(false);
+  const [priceError, setPriceError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (newItem && newPrice) {
+    let hasError = false;
+
+    if (!newItem) {
+      setItemError(true);
+      hasError = true;
+    } else {
+      setItemError(false);
+    }
+
+    if (!newPrice) {
+      setPriceError(true);
+      hasError = true;
+    } else {
+      setPriceError(false);
+    }
+
+    if (!hasError) {
       const formattedPrice = parseFloat(newPrice).toFixed(2);
       setGroceryListItem([...groceryList, { groceryItem: newItem, price: formattedPrice }]);
       setNewItem('');
@@ -38,25 +56,27 @@ const GroceryList = () => {
         <form method="POST" className="row g-3" onSubmit={handleSubmit}>
           <div className="col">
             <input
-              className="form-control"
+              className={`form-control ${itemError ? "is-invalid" : ""}`}
               type="text"
-              value={newItem} 
-              onChange={(e) => setNewItem(e.target.value)} 
+              value={newItem}
+              onChange={(e) => setNewItem(e.target.value)}
               placeholder="Name of grocery item..."
               aria-label="Name of grocery item..."
             />
+            {itemError && <div className="text-danger"><small>Please enter the item.</small></div>}
           </div>
           <div className="col">
             <input
-              className="form-control"
+              className={`form-control ${priceError ? "is-invalid" : ""}`}
               type="number"
               min="0"
               step=".01"
-              value={newPrice} 
-              onChange={(e) => setNewPrice(e.target.value)} 
+              value={newPrice}
+              onChange={(e) => setNewPrice(e.target.value)}
               placeholder="Cost of grocery item..."
               aria-label="Cost of grocery item..."
             />
+            {priceError && <div className="text-danger"><small>Please enter the price.</small></div>}
           </div>
           <div className="col-md-auto">
             <button type="submit" className="btn btn-success">

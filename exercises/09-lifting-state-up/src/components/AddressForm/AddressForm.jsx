@@ -17,7 +17,7 @@ import states from "../../assets/states";
  * - country
  * - a callback function(s) for setting first name, last name, etc.
  */
-function AddressForm({ props }) {
+function AddressForm(props) {
   /**
    * You will need to:
    * - Set the value of each <input> / <select> to something from props
@@ -32,7 +32,7 @@ function AddressForm({ props }) {
       props.city &&
       props.state &&
       props.zipcode &&
-      props.country) setDisplayResults(true);
+      props.country) props.setDisplayResults(true);
   }
 
   return (
@@ -148,6 +148,7 @@ function AddressForm({ props }) {
           name="confirm"
           type="checkbox"
           className="form-check-input"
+          checked={props.newsletter}
           value={props.newsletter}
           onChange={e => props.setNewsletter(!props.newsletter)}
         />

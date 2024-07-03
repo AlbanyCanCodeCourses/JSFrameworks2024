@@ -17,40 +17,48 @@ function Address() {
   const [zipcode, setZipcode] = useState('');
   const [country, setCountry] = useState('');
   const [newsletter, setNewsletter] = useState(false);
-
-  const stateVarProps = {
-    firstName,
-    lastName,
-    address,
-    city,
-    state,
-    zipcode,
-    country,
-    newsletter
-  }
-
-  const props = {
-    firstName,
-    setFirstName,
-    lastName,
-    setLastName,
-    address,
-    setAddress,
-    city,
-    setCity,
-    state,
-    setState,
-    zipcode,
-    setZipcode,
-    country,
-    setCountry,
-    newsletter,
-    setNewsletter
-  }
   /**
    * You will need to pass props to <AddressResults /> and <AddressForm />
    */
-  return <>{displayResults ? <AddressResults props={stateVarProps} /> : <AddressForm setDisplayResults={setDisplayResults} props={props} />}</>;
+  return <>{displayResults ?
+    <AddressResults
+      setDisplayResults={setDisplayResults}
+      firstName={firstName}
+      setFirstName={setFirstName}
+      lastName={lastName}
+      setLastName={setLastName}
+      address={address}
+      setAddress={setAddress}
+      city={city}
+      setCity={setCity}
+      state={state}
+      setState={setState}
+      zipcode={zipcode}
+      setZipcode={setZipcode}
+      country={country}
+      setCountry={setCountry}
+      newsletter={newsletter}
+      setNewsletter={setNewsletter}
+    /> :
+    <AddressForm
+      setDisplayResults={setDisplayResults}
+      firstName={firstName}
+      setFirstName={setFirstName}
+      lastName={lastName}
+      setLastName={setLastName}
+      address={address}
+      setAddress={setAddress}
+      city={city}
+      setCity={setCity}
+      state={state}
+      setState={setState}
+      zipcode={zipcode}
+      setZipcode={setZipcode}
+      country={country}
+      setCountry={setCountry}
+      newsletter={newsletter}
+      setNewsletter={setNewsletter}
+    />}</>;
 }
 
 export default Address;

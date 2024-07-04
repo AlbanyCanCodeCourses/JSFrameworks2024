@@ -1,16 +1,18 @@
 // Import what you need from React
-import { useState } from "react";
+import { useState, /*useContext, createContext*/ } from "react";
 import "./App.css";
 import translations from "./assets/translations.json";
 
 /**
  * Declare createContext() here.
  */
+//const NumberContext = createContext();
 
 function App() {
   /**
    * Set state here. (See useState in "CreateAccount" below.)
    */
+  
 
   /**
    * You will need to return more than just <CreateAccount />.

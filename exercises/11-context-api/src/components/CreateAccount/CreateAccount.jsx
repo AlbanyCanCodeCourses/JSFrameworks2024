@@ -1,47 +1,26 @@
-import React, { useState, useContext, createContext } from "react";
-import "./App.css";
-import translations from "./assets/translations.json";
-import LanguageContext from "./../Context/LanguageContext.jsx";
-
-function App() {
-  const [language, setLanguage] = useState("en");
-
-  return (
-    <LanguageContext.Provider value={{ language, setLanguage }}>
-      <CreateAccount />
-    </LanguageContext.Provider>
-  );
-}
+// Import what you need from React
+import translations from "./CreateAccountTranslations.json";
+// Import "TranslatorContext"
 
 function CreateAccount() {
-  const { language, setLanguage } = useContext(LanguageContext);
-  const t = translations[language];
+  /**
+   * You will need to add something here. This component should be similar to the "CreateAccount" component in the first context API exercise.
+   * @see exercises/08a-context-api/src/App.jsx
+   * @see solutions/08a-context-api/App.solutions.jsx
+   */
 
+  /**
+   * Replace "en" with a constant or variable.
+   */
+  const t = translations["en"];
+
+  /**
+   * You do not have to change anything below this line.
+   */
   return (
-    <div className="container pt-4 pb-4">
-      <div className="d-flex justify-content-between">
-        <div>
-          <h1 className="h3">{t["Create a New Account"]}</h1>
-          <p className="lead">{t["It’s quick and easy."]}</p>
-        </div>
-        <div>
-          <button
-            type="button"
-            className="btn btn-link btn-sm"
-            onClick={() => setLanguage("en")}
-          >
-            English
-          </button>
-          |
-          <button
-            type="button"
-            className="btn btn-link btn-sm"
-            onClick={() => setLanguage("es")}
-          >
-            Español
-          </button>
-        </div>
-      </div>
+    <>
+      <h1 className="h3">{t["Create a New Account"]}</h1>
+      <p className="lead">{t["It’s quick and easy."]}</p>
       <form>
         <div className="row g-3">
           <div className="col-sm-6">
@@ -98,8 +77,8 @@ function CreateAccount() {
           {t["Sign Up"]}
         </button>
       </form>
-    </div>
+    </>
   );
 }
 
-export default App;
+export default CreateAccount;

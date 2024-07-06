@@ -1,22 +1,40 @@
-import React, { useState, useContext, createContext } from "react";
+import { useState, useContext, createContext } from "react";
 import "./App.css";
 import translations from "./assets/translations.json";
-import LanguageContext from "./../Context/LanguageContext.jsx";
+
+/**
+ * Initializes the Context API. Think of this as a storage bin or cabinet
+ * that stores state that is shared between components.
+ */
+const TranslatorContext = createContext();
 
 function App() {
+  /**
+   * State should be set in the parent or a higher level component.
+   */
   const [language, setLanguage] = useState("en");
-
+  /**
+   * We are wrapping the child component <CreateAccount /> in the <TranslatorContext.Provider /> and storing "language" and "setLanguage" inside of the "TranslatorContext".
+   * You must use `value={"what you are storing"}`.
+   *
+   * This is a similar idea to lifting state up, where you would have a parent pass state ("language") and the update function ("setLanguage") as props. Here is the equivalent with lifting up state:
+   * e.g. <CreateAccount language={language} setLanguage={setLanguage} />
+   */
   return (
-    <LanguageContext.Provider value={{ language, setLanguage }}>
+    <TranslatorContext.Provider value={[language, setLanguage]}>
       <CreateAccount />
-    </LanguageContext.Provider>
+    </TranslatorContext.Provider>
   );
 }
 
 function CreateAccount() {
-  const { language, setLanguage } = useContext(LanguageContext);
+  /**
+   * useContext("TranslatorContext") returns whatever we stored inside of "TranslatorContext".
+   * In this case, we stored [language, setLanguage] with the line
+   * `<TranslatorContext.Provider value={[language, setLanguage]}>`
+   */
+  const [language, setLanguage] = useContext(TranslatorContext);
   const t = translations[language];
-
   return (
     <div className="container pt-4 pb-4">
       <div className="d-flex justify-content-between">

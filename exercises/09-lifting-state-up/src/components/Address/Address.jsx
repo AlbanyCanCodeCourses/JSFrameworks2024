@@ -18,10 +18,7 @@ function Address() {
   const [country, setCountry] = useState("");
   const [didSignUp, setDidSignUp] = useState(false);
    
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setDisplayResults(true);
-  }
+  
   /**
    * You will need to pass props to <AddressResults /> and <AddressForm />
    */
@@ -56,7 +53,7 @@ function Address() {
     setCountry,
     didSignUp,
     setDidSignUp,
-    handleSubmit
+  
   }} />}</>;
 }
 

@@ -23,6 +23,32 @@ This project will bring together these topics covered in class:
 - Forms in React
 - Lifting State Up
 
+## Getting Started
+
+You first want to create a new React project with Vite.js. Put it somewhere you will remember it. It should be outside of the class repository. Open your terminal or Git Bash:
+
+```shell
+# For example, if you want to put this in your "Documents" folder:
+cd ~/Documents
+
+# Install Vite.js and React
+npm create vite@latest
+# Project name: retro-board
+# Select a framework: React
+# Select a variant: JavaScript
+
+cd retro-board/
+npm install
+```
+
+You will need to [create a new public Github repository](https://help.github.com/en/articles/create-a-repo) for this project. It must be public. Skip adding a _README.md_, _.gitignore_ and license file. (You already created these with Vite.js).
+
+When you get to this page:
+
+![Github's instructions on how to clone the repository](./github-new-repository.png)
+
+Copy the instructions under "…or push an existing repository from the command line" and paste them in your terminal.
+
 ## Project Requirements
 
 Your retrospective board must meet all the following application setup, UI and coding requirements.

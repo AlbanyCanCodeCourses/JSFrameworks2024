@@ -1,6 +1,6 @@
 # Project 1: Retro Board
 
-**Due July 31, 2023 End of Day**
+**Due July 29, 2024 End of Day**
 
 For your first project, you will be creating a retrospective board. A retrospective board is used within the Scrum workflow. Scrum is the most popular Agile style of software project management used to guide the software development life cycle. Scrum style management is based on four basic ceremonies for each sprint or software release: the 1.) Sprint Planning meeting, 2.) Daily Stand-up, 3.) Sprint Review, and 4.) Sprint Retrospective. As a part of the Sprint Retrospective, team members will use a retrospective board to reflect on what went well and what they need to improve on for next time.
 
@@ -49,10 +49,13 @@ Note that we will go over setting up the project in class.
 - The user should be able to move the retrospective item into a different category by clicking on a left or right arrow. If there is not a category to the left, then clicking the arrow should move the retrospective item to the rightmost category. The same applies to if there is no category to the right but in reverse. When the item moves from one category to the next, the retrospective item’s user input, visual structure, and appearance (with the exception of color) should stay the same.
 
 - For the final UI requirement, you must pick one of the following:
-  - Add a “thumbs up” and “thumbs down” button (or other clickable UI elements) to your retrospective items. Clicking on one of these buttons should increase the number of “thumbs up” or “thumbs down” votes. Display the number of “thumbs up” and “thumbs down” votes in each retrospective item.
+
+  - Add a “like” and “dislike” button (or other clickable UI elements) to your retrospective items. Clicking on one of these buttons should change the number of votes for likes (and, optionally, dislikes). Display the number of votes in each retrospective item.
   - Validate user input. Make text within the retrospective item required. When the retrospective item loses focus or is submitted (the type of event will depend on how you design the functionality of your application), the text should be validated in some way. Suggestions are to remove the retrospective item from the board or display an error message.
   - Add functionality to change the layout of the retrospective board. Include some type “layout switcher” UI element(s). When clicked or activated, the layout of the categories will change between a horizontal and vertical layout.  
     ![Layout switch example](layout-switcher-example.png)
+
+- Your project should not have any major bugs.
 
 **It is not required, but it is highly recommended that you lift state up.**
 
@@ -95,8 +98,10 @@ Consider using `<textarea>` for user input instead of `<input type="text">`.
 
 While your grade is not determined on whether or not you follow these code quality tips, we encourage you to code to a professional standard. One of the goals of this project is to help you build a portfolio. Just like an interviewer will judge you on your attire, employers will judge you on the neatness of your code.
 
-- You should have _README.md_ written in Markdown. It should explain the purpose of the project, give instructions on how to install and start your project and credit yourself as the author.
-- Add anything that should not be committed to your _.gitigore_ file. Your _node_modules_ folder should be ignored.
+- You should have _README.md_ written in Markdown. It should explain the purpose of the project, give instructions on how to install and start your project, and credit yourself as the author. Here are some resources on creating _README.md_ files:
+  - [Make a README](https://www.makeareadme.com/)
+  - [Markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+- Add anything that should not be committed to your _.gitigore_ file. Your "node_modules" folder should be ignored.
 - Choose descriptive and specific names for React components, constants, functions and anything else that is named.
 - You must not leave any debugging statements in your code. Remove any `console.log()` statements from your code before committing.
 - Only have actual comments within comment tags. Do not commit code that you commented out for debugging purposes.
@@ -117,7 +122,7 @@ Your instructors are will provide one hour per week to help you with your projec
 
 ## Project Submission
 
-The initial deadline for the project is July 31. You will submit your project by emailing Jamal (jamal@albanycancode.org) and Matina (matina@albanycancode.org) a link to your project repository on Github. Your project does not have to be 100% complete, but try to complete as much as you can.
+The initial deadline for the project is July 29. You will submit your project by emailing Jamal (jamal@albanycancode.org) and Matina (matina@albanycancode.org) a link to your project repository on Github. Your project does not have to be 100% complete, but try to complete as much as you can.
 
 CanCode Communities may host your project in a public space and they may be sharing your work with employers.
 

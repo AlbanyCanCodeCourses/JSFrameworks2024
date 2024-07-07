@@ -1,13 +1,8 @@
 // Import something here
 import "./App.css";
-import { useState } from "react"
 
 const GroceryList = () => {
-  const [actionItems, setActionItems] = useState()
-
-
   return (
-    
     <div className="container">
       <div className="card card-body bg-light mb-2">
         <form method="POST" className="row g-3">
@@ -27,12 +22,10 @@ const GroceryList = () => {
               step=".01"
               placeholder="Cost of grocery item..."
               aria-label="Cost of grocery item..."
-              onChange={(e) => updateItem(e.target.value, index)}
-              
             />
           </div>
           <div className="col-md-auto">
-            <button OnClick ={() => addItem(index)} type="submit" className="btn btn-success">
+            <button type="submit" className="btn btn-success">
               Add
             </button>
           </div>

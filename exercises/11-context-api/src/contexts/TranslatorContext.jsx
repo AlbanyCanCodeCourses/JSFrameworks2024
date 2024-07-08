@@ -12,4 +12,11 @@ export function TranslatorProvider({ children }) {
    * @see previous Context Api exercise
    * @see solutions for previous Context Api exercise
    */
+  const [language, setLanguage] = useState("en");
+
+  return (
+    <TranslatorContext.Provider value={{ language, setLanguage }}>
+      {children}
+    </TranslatorContext.Provider>
+  );
 }

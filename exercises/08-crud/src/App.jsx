@@ -13,7 +13,7 @@ const [hasError, setHasError] = useState("")
 
    const addItem = () =>{
      const newItem = {
-       groceryName: groceryName,
+       groceryName,
        cost: parseFloat(cost)
       };
       setList([...list, newItem]);
@@ -28,17 +28,16 @@ const [hasError, setHasError] = useState("")
     }else setHasError(true);
    };
   
-  const deleteItem = (index)=>{
+  const deleteItem = (index) =>{
     setList(
-      list.filter((_, currentIndex) => currentIndex !== index)
+      list.filter((_, i) => i !== index)
     )
   }
 
 
 const findTotal = () =>{
- list.reduce((total, item)=>{
-
- console.log(total + item.cost)
+ return list.reduce((total, item)=>{
+  return total + item.cost;
  }, 0);
 }
 
@@ -121,7 +120,7 @@ const findTotal = () =>{
               
               return(
                 <>
-                <tr>
+                <tr key = {index}>
                    <td>{item.groceryName}</td>
                    <td>{item.cost.toFixed(2)}</td>
                    <td>
@@ -137,7 +136,7 @@ const findTotal = () =>{
           </tbody>
         </table>
         <p className="lead">
-          <strong>Total Cost: ${findTotal()}</strong>
+          <strong>Total Cost: ${findTotal().toFixed(2)}</strong>
         </p>
         <div className="d-flex justify-content-end">
           <button type="button" className="btn btn-outline-success" onClick={handleClear}>

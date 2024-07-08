@@ -153,7 +153,7 @@ function AddressForm(props) {
           type="checkbox"
           className="form-check-input"
           value={props.didSignUp}
-          onChange={(e) => props.setDidSignUp(e.target.checked)}
+          onChange={(e) => props.DidSignUp(e.target.checked)}
         />
         <label htmlFor="confirm" className="form-check-label">
           Sign Up For Newsletter

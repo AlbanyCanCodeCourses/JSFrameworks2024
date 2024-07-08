@@ -14,7 +14,7 @@ function Languages() {
   const clickHandler = e => {
     const newLangauge = (e.target.textContent === "English" ? "en" : "es");
     value.setLanguage(newLangauge);
-  }
+  };
 
   return (
     <>

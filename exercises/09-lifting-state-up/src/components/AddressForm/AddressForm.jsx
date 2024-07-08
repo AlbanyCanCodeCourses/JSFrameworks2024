@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./AddressForm.css";
 import PropTypes from "prop-types";
 
@@ -24,15 +25,22 @@ function AddressForm(props) {
    * - Use callback function(s) in props to update <App>'s state
    * - Add an event handler to handle form submission
    */
-  const submitHandler = e => {
-    e.preventDefault();
+  const [isValid, setIsValid] = useState(false);
+
+  const checkFormFields = () => {
     if (props.firstName &&
       props.lastName &&
       props.address &&
       props.city &&
       props.state &&
       props.zipcode &&
-      props.country) props.setDisplayResults(true);
+      props.country) setIsValid(true);
+  }
+
+  const submitHandler = e => {
+    e.preventDefault();
+    checkFormFields();
+    if (isValid) props.setDisplayResults(true);
   }
 
   return (

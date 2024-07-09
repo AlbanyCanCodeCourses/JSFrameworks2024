@@ -7,27 +7,28 @@ import Login from '../Login/Login';
 import { TranslatorProvider } from '../../contexts/TranslatorContext';
 import Languages from '../Languages/Languages';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
-import ThemeContext, { ThemeProvider } from '../../contexts/ThemeContext.jsx';
+import ThemeContext, { ThemeProvider } from '../../contexts/ThemeContext';
+import ThemeChange from '../ThemeChange/ThemeChange';
+import '@fortawesome/fontawesome-svg-core/styles.css'; // Import FontAwesome styles
 
 function App() {
-    const { themeStyle } = useContext(ThemeContext); // Ensure themeStyle is correctly accessed
+    const { themeStyle } = useContext(ThemeContext);
 
     return (
-        <ThemeProvider>
+        <div className="App" style={themeStyle}>
             <TranslatorProvider>
                 <ErrorBoundary>
-                    <div className="App" style={{ ...themeStyle }}>
-                        <NavBar />
-                        <div className="container pt-4 pb-4">
-                            <CreateAccount />
-                        </div>
-                        <Languages />
-                        <Footer />
-                        <Login />
+                    <NavBar />
+                    <div className="container pt-4 pb-4">
+                        <ThemeChange />
+                        <CreateAccount />
                     </div>
+                    <Languages />
+                    <Footer />
+                    <Login />
                 </ErrorBoundary>
             </TranslatorProvider>
-        </ThemeProvider>
+        </div>
     );
 }
 

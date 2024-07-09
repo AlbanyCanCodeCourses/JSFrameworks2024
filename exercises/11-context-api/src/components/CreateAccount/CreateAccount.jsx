@@ -1,7 +1,9 @@
 // Import what you need from React
+import ThemeContext from "../../contexts/ThemeContext.jsx";
 import { TranslatorContext } from "../../contexts/TranslatorContext.jsx";
 import Languages from "../Languages/Languages.jsx";
- import translations from "./CreateAccountTranslations.json";
+import translations from "./CreateAccountTranslations.json";
+ 
 
 import { useContext } from "react";
 // Import "TranslatorContext"
@@ -16,6 +18,9 @@ function CreateAccount() {
   // const t = translations[language];
 const { language,setLangauge } = useContext(TranslatorContext);
   const t = translations[language];
+
+ const { themeStyle } = useContext(ThemeContext); 
+  const { theme, setTheme } = useContext(ThemeContext);
   /**
    * Replace "en" with a constant or variable.
    */
@@ -26,6 +31,7 @@ const { language,setLangauge } = useContext(TranslatorContext);
    */
   return (
     <>
+       <div className="App" style={{ ...themeStyle }}>
       <h1 className="h3">{t["Create a New Account"]}</h1>
       <p className="lead">{t["It’s quick and easy."]}</p>
       <form>
@@ -83,7 +89,8 @@ const { language,setLangauge } = useContext(TranslatorContext);
         <button type="submit" className="btn btn-lg btn-success">
           {t["Sign Up"]}
         </button>
-      </form>
+        </form>
+        </div>
     </>
   );
 }

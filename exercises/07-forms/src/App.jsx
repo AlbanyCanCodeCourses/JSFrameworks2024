@@ -1,27 +1,26 @@
 import "./App.css";
-// Import here"
-import {useState} from "react";
-import states from "./assets/states.json"
-import countries from "./assets/countries.json"
+import { useState } from "react";
+import states from "./assets/states.json";
+import countries from "./assets/countries.json";
 
 function App() {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [zipcode, setZipcode] = useState('');
+  const [selectedState, setSelectedState] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState('');
+  const [newsletter, setNewsletter] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const [States, setStates] = useState([]);
-  const [Countries, setCountries] = useState([]);
-  const [firstName,setFirstName]= useState ([]);
-  const [lastName,setLastName]=useState([]);
-  const [address, setAddress]=useState([]);
-  const [city,setCity]=useState([]);
-  const [zipcode,setZipcode]=useState([]);
-  const [newsletter, setNewsletter]=useState([]);
-  const [isSubmitted, setIsSubmitted] = useState([]);
-
-  const handledSubmit = (e) => (e.preventDefault());
-  setIsSubmitted (true);
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+  };
 
   return (
-    <form className="container mt-4" method="POST">
+    <form className="container mt-4" method="POST" onSubmit={handleSubmit}>
       {/* You will need to handle form submission */}
       <div className="mb-3">
         <label htmlFor="firstName" className="control-label">
@@ -46,7 +45,7 @@ function App() {
           type="text"
           className="form-control"
           value={lastName}
-          onChange = {(e) => setLastName(e.target.value)}
+          onChange={(e) => setLastName(e.target.value)}
         />
       </div>
       <div className="mb-3">
@@ -65,34 +64,37 @@ function App() {
           Street Address, P.O. Box, Company Name, C/O
         </p>
       </div>
-
       <div className="mb-3">
         <label htmlFor="city" className="control-label">
           City / Town
         </label>
-        <input id="city" 
-        name="city" 
-        type="text" 
-        className="form-control"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
+        <input
+          id="city"
+          name="city"
+          type="text"
+          className="form-control"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
         />
       </div>
       <div className="mb-3">
         <label htmlFor="state" className="control-label">
           State / Province / Region
         </label>
-        {/* Loop through the states you imported here */}
-        <select id="state" name="state" className="form-control" value={states}
-          onChange={(e) => setStates(e.target.value)} >
-        {states.map((state) => (
+        <select
+          id="state"
+          name="state"
+          className="form-control"
+          value={selectedState}
+          onChange={(e) => setSelectedState(e.target.value)}
+        >
+          {states.map((state) => (
             <option key={state} value={state}>
               {state}
             </option>
           ))}
         </select>
       </div>
-
       <div className="mb-3">
         <label htmlFor="postalCode" className="control-label">
           Zip / Postal Code
@@ -103,23 +105,26 @@ function App() {
           type="text"
           className="form-control"
           value={zipcode}
-          onChange={e => setZipcode(e.target.value)}
+          onChange={(e) => setZipcode(e.target.value)}
         />
       </div>
-
       <div className="mb-3">
         <label htmlFor="country" className="control-label">
           Country
         </label>
-        {/* Loop through the countries you imported here */}
-        <select id="country" name="country" className="form-control" value={countries}
-          onChange={(e) => setCountries (e.target.value)}>
-        {countries.map((country) => (
+        <select
+          id="country"
+          name="country"
+          className="form-control"
+          value={selectedCountry}
+          onChange={(e) => setSelectedCountry(e.target.value)}
+        >
+          {countries.map((country) => (
             <option key={country} value={country}>
               {country}
             </option>
           ))}
-          </select>
+        </select>
       </div>
       <div className="mb-3 form-check">
         <input
@@ -127,9 +132,8 @@ function App() {
           name="signUpForNewsLetter"
           type="checkbox"
           className="form-check-input"
-          value={newsletter}
+          checked={newsletter}
           onChange={(e) => setNewsletter(e.target.checked)}
-         
         />
         <label htmlFor="signUpForNewsLetter" className="form-check-label">
           Sign Up For Newsletter
@@ -138,23 +142,22 @@ function App() {
       <button type="submit" className="btn btn-primary">
         Submit
       </button>
-
-      {/*
-       * Find a way to only display this once the form has been submitted.
-       * Hint: You will need to change "false" below with something else
-       */}
       {isSubmitted && (
         <div className="card card-body bg-light mt-4 mb-4">
           Results:
           <ul className="list-unstyled mb-0">
-            {/* Add <li></li> tags here */}
-            <li>First Name {firstName}</li>;
-            <li>Last Name {lastName}</li>;
-            <li>Address {address}</li>
-            <li>City {city}</li>
-            <li>State {states}</li>
-            <li>Country {countries}</li>
-            <li>Zipcode {zipcode}</li>
+            <li>First Name: {firstName}</li>
+            <li>Last Name: {lastName}</li>
+            <li>Address: {address}</li>
+            <li>City: {city}</li>
+            <li>State: {selectedState}</li>
+            <li>Country: {selectedCountry}</li>
+            <li>Zipcode: {zipcode}</li>
+            <li>
+              {newsletter
+                ? "Thank you for signing up for our newsletter!"
+                : "Please sign up for our newsletter!"}
+            </li>
           </ul>
         </div>
       )}

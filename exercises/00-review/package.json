@@ -4,8 +4,7 @@
   "type": "module",
   "description": "",
   "main": "index.js",
-  "type": "module",
-  "scripts": {
+    "scripts": {
     "test": "mocha test/**/*.spec.js"
   },
   "keywords": [],

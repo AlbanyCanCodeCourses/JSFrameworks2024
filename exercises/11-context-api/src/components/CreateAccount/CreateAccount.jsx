@@ -1,6 +1,8 @@
 // Import what you need from React
+import { useContext } from "react";
 import translations from "./CreateAccountTranslations.json";
 // Import "TranslatorContext"
+import { TranslatorContext } from "../../contexts/TranslatorContext";
 
 function CreateAccount() {
   /**
@@ -12,7 +14,8 @@ function CreateAccount() {
   /**
    * Replace "en" with a constant or variable.
    */
-  const t = translations["en"];
+  const value = useContext(TranslatorContext);
+  const t = translations[value.language];
 
   /**
    * You do not have to change anything below this line.
@@ -68,7 +71,7 @@ function CreateAccount() {
           <small>
             {
               t[
-                "By clicking Sign Up, you agree to our Terms, Data Policy and Cookies Policy. You may receive SMS Notifications from us and can opt out any time."
+              "By clicking Sign Up, you agree to our Terms, Data Policy and Cookies Policy. You may receive SMS Notifications from us and can opt out any time."
               ]
             }
           </small>

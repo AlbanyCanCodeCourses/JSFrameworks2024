@@ -1,3 +1,67 @@
 /**
  * Write your CSS here
  */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+div.btn-container {
+  display: flex;
+  gap: 1rem;
+
+  & button.expand-btn {
+    background-color: wheat;
+  }
+
+  & button.collapse-btn {
+    background-color: lavenderblush;
+  }
+}
+
+h1.p-2.h3,
+h1.p-2.h3>div {
+  display: grid;
+  place-items: center;
+}
+
+#root div.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+div.container div>p.roll-output {
+  margin-top: 1rem;
+}
+
+#root div.container:nth-child(1)>p {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+#root div.container:nth-child(1)>p>span {
+  font-weight: bold;
+  font-size: 1.075rem;
+}
+
+#char-count-input {
+  padding: 0.5rem 1rem;
+}
+
+button {
+  align-self: flex-start;
+}
+
+form button {
+  background-color: #efefef;
+  font-weight: 500;
+  padding-inline: 4px;
+}

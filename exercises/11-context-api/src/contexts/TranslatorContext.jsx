@@ -6,10 +6,18 @@ import { createContext, useState } from "react";
  */
 export const TranslatorContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 export function TranslatorProvider({ children }) {
   /**
    * Complete me. This component should be similar to the "App" component in the first context API exercise.
    * @see previous Context Api exercise
    * @see solutions for previous Context Api exercise
    */
+  const [language, setLanguage] = useState("en");
+
+  return (
+    <TranslatorContext.Provider value={{ language, setLanguage }}>
+      {children}
+    </TranslatorContext.Provider>
+  );
 }

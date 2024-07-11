@@ -1,69 +1,77 @@
-// Import something here
+import { useState } from "react";
+import Form from "./components/Form/Form";
+import ListTable from "./components/ListTable/ListTable";
+import TableContext from "./components/TableContext/TableContext";
+import ClearButton from "./components/Buttons/ClearButton/ClearButton";
 import "./App.css";
 
+// MAIN RENDER COMPONENT
 const GroceryList = () => {
+  const [itemName, setItemName] = useState('');
+  const [itemPrice, setItemPrice] = useState('');
+  const [itemList, setItemList] = useState([]);
+  const [hasError, setHasError] = useState(false);
+
+  const addItem = () => {
+    const newItem = {
+      name: itemName,
+      price: itemPrice
+    }
+    setItemList([...itemList, newItem]);
+    setHasError(false);
+  }
+
+  const removeItem = e => {
+    const indexInList = +e.target.attributes.index.value;
+    setItemList(
+      itemList.filter((i, index) =>
+        index !== indexInList
+      )
+    );
+
+    const areItemsRemaining = itemList.length > 1;
+    if (!areItemsRemaining) {
+      setItemName('');
+      setItemPrice('');
+    }
+  }
+
+  const clearItems = () => {
+    setItemName('');
+    setItemPrice('');
+    setItemList([]);
+    setHasError(false);
+  }
+
   return (
     <div className="container">
       <div className="card card-body bg-light mb-2">
-        <form method="POST" className="row g-3">
-          <div className="col">
-            <input
-              className="form-control"
-              type="text"
-              placeholder="Name of grocery item..."
-              aria-label="Name of grocery item..."
-            />
-          </div>
-          <div className="col">
-            <input
-              className="form-control"
-              type="number"
-              min="0"
-              step=".01"
-              placeholder="Cost of grocery item..."
-              aria-label="Cost of grocery item..."
-            />
-          </div>
-          <div className="col-md-auto">
-            <button type="submit" className="btn btn-success">
-              Add
-            </button>
-          </div>
-        </form>
+        <Form
+          itemName={itemName}
+          setItemName={setItemName}
+          itemPrice={itemPrice}
+          setItemPrice={setItemPrice}
+          itemList={itemList}
+          setItemList={setItemList}
+          addItem={addItem}
+          hasError={hasError}
+          setHasError={setHasError}
+        />
       </div>
       <div className="card card-body border-white">
         <h1 className="h4">Grocery List</h1>
-        <table className="table table-sm">
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Cost</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {/**
-             * Complete me. (You can use something else instead of a table if you like)
-             * @example
-             * <tr>
-             *   <td>Toilet Paper</td>
-             *   <td>$1.99</td>
-             *   <td>
-             *     <button aria-label="Delete" title="Delete" ... >
-             *       &times;
-             *     </button>
-             *   </td>
-             * </tr>
-             */}
-          </tbody>
-        </table>
-        <p className="lead">
-          <strong>Total Cost: {/* Complete me */}</strong>
-        </p>
+        <ListTable
+          itemList={itemList}
+          setItemList={setItemList}
+          onDelete={removeItem}
+        />
+        <TableContext
+          itemList={itemList}
+        />
         <div className="d-flex justify-content-end">
-          <button type="button" className="btn btn-outline-success">
-            Clear
-          </button>
+          <ClearButton
+            onClick={clearItems}
+          />
         </div>
       </div>
     </div>

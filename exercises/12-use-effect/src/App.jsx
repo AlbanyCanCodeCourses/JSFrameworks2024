@@ -1,16 +1,26 @@
 // Import useEffect here
+import { useEffect } from "react";
 import "./App.css";
 import ronSwansonImage from "./assests/ronswanson.png";
 // import Axios (or use Fetch)
+import 
 
 function App() {
   /**
    * Set up your state
    */
+  const [quote, setQuote] = useState([]);
 
   /**
    * Make an AJAX call with the useEffect hook
    */
+  const fetchQuote = async () => {
+    const { data } = await axios ('https://ron-swanson-quotes.herokuapp.com/v2/quotes');
+    setQuote(data.data);
+  };
+  useEffect(() => {
+    const fetchQuote();
+  },[]);
 
   return (
     <body className="bg-warning text-center">

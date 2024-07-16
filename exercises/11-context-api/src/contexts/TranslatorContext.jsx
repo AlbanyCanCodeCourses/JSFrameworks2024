@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 
+
 /**
  * I'm initializing the Context API here.
  * Every component that either sets or gets something from the Context API will need to import this.
@@ -7,6 +8,10 @@ import { createContext, useState } from "react";
 export const TranslatorContext = createContext();
 
 export function TranslatorProvider({ children }) {
+  const [language, setLanguage] = useState("en")
+  return <TranslatorContext.Provider value={[language, setLanguage]}>
+  {children}
+  </TranslatorContext.Provider>
   /**
    * Complete me. This component should be similar to the "App" component in the first context API exercise.
    * @see previous Context Api exercise

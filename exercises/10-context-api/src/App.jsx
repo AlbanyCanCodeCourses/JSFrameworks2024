@@ -28,7 +28,7 @@ function App() {
 
   return <languageContent.Provider value={[language, setLanguage]} >
 
-  <CreateAccount />;
+  <CreateAccount />
   </languageContent.Provider>
 }
 

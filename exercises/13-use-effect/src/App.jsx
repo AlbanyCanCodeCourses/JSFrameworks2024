@@ -1,5 +1,6 @@
 // Import useEffect here
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from 'axios';
 import "./App.css";
 // import Axios (or use Fetch)
 
@@ -19,6 +20,26 @@ function App() {
    * You may need to set something else in state
    */
 
+  const [hasError, setHasError] = useState(false);
+const[selectedNumber, setSelectNumber] = useState("1");
+
+const fetchDogs = async () =>{
+    try{
+      const { data } = await axios.get(`https://dog.ceo/api/breeds/image/random/${selectedNumber}`);
+      setDogImages(data.message);
+    }
+  catch(err){
+    console.error(err);
+    setHasError(true);
+  }
+
+};
+
+
+useEffect(() => {
+  fetchDogs();
+}, [selectedNumber]);
+
   /**
    * Make an AJAX call with the useEffect hook
    */
@@ -27,8 +48,9 @@ function App() {
     <div className="App">
       <h1>Dogs</h1>
       {/* Make me a controlled input */}
-      <select>
-        <option value="1">1</option>
+
+      <select value= {selectedNumber} onChange ={(e)=>{setSelectNumber(e.target.value)}}>
+        <option  value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>

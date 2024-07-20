@@ -11,7 +11,6 @@ TypeScript is a very marketable skill for those of you who are job searching. It
 - [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/basic_type_example)
 - [React events and TypeScript: a complete guide](https://devtrium.com/posts/react-typescript-events)
 - TypeScript and React: [Components](https://fettblog.eu/typescript-react/components/) | [Hooks](https://fettblog.eu/typescript-react/hooks/) | [Events](https://fettblog.eu/typescript-react/events/)
-- [ErrorBoundaries](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/error_boundaries)
 - [TutorialsTeacher](https://www.tutorialsteacher.com/typescript)
 
 ## Getting Started & Instructions
@@ -19,8 +18,8 @@ TypeScript is a very marketable skill for those of you who are job searching. It
 You will be refactoring two of your previous assignments to use TypeScript.
 
 - exercises/03-props/
-- exercises/06-forms/
-- exercises/14-suspense/
+- exercises/07-forms/
+- exercises/12-use-effect/
 
 One thing to note before we begin is that the tests are going to break. If time permits, you will see an example of automated tests with Typescript and React later on in the course.
 
@@ -39,6 +38,23 @@ Next, you are going to configure TypeScript by copy the following files below. F
 - Copy _exercises/15-typescript/src/vite-env.d.ts_ and paste it into _exercises/03-props/src/_
 - Delete _exercises/03-props/vite.config.js_. Copy _exercises/15-typescript/vite.config.ts_ and paste it into _exercises/03-props/_
 - Delete _exercises/03-props/.eslintrc.cjs_. Copy _exercises/15-typescript/.eslintrc.cjs_ and paste it into _exercises/03-props/_
+
+When this is complete, your file structure should look like this:
+
+```
+> src
+    - App.jsx
+    - main.jsx
+    - and any other files ...
+    - vite-env.d.ts
+- .eslintrc.cjs
+- index.html
+- package.json
+- tsconfig.json
+- tsconfig.node.json
+- vite.config.ts
+- and a few other files ...
+```
 
 Rename _src/main.jsx_ file (the entry point) as _src/main.tsx_ and update the _index.html_ file so that loads _/src/main.tsx_:
 
@@ -60,7 +76,7 @@ Now, start the application with `npm run dev`. If you see this error:
 
 This is because it is possible that `document.getElementById("root")` can be null and TypeScript doesn't like this. You are going to cast `document.getElementById("root")` as an HTML element. Make the following changes inside of _src/main.tsx_:
 
-```ts
+```tsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 // The line below will vary from exercise to exercise
@@ -76,7 +92,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 
 Rename all files that contain React components so that they end with _.tsx_. You may need to restart your application. (Press `ctrl+c` to quit and then `npm run dev` to start.) You will see errors on the screen and in your terminal. Your job is to refactor the code so that it is in TypeScript. For most errors, this means either declaring new types and interfaces or importing and using existing types from React.
 
-You should also rename _countries.json_ and _states.json_ so that they end in _.ts_. You will need to export the countries and states as named exports. For example:
+In _exercises/07-forms/_, rename _countries.json_ and _states.json_ so that they end in _.ts_. You will need to export the countries and states as named exports. For example:
 
 ```ts
 // In countries.ts
@@ -88,50 +104,18 @@ export const countries = [
 import { countries } from "./assets/countries";
 ```
 
-Refactor the error boundary file to be this:
+In _exercises/12-use-effect/_, update _src/App.tsx_ so that the axios response so that it isn't using type `any`. For example, you will need to do something like this:
 
 ```ts
-import { Component, ErrorInfo, ReactNode } from "react";
+// ...
 
-type ErrorBoundaryProps = {
-  children?: ReactNode;
-  fallback: ReactNode;
-};
+type Quote = // ... complete me
 
-type ErrorBoundaryState = {
-  hasError: boolean;
-  error?: Error;
-};
-
-class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  state: ErrorBoundaryState = { hasError: false, error: undefined };
-  static getDerivedStateFromError(error: Error) {
-    return {
-      hasError: true,
-      error,
-    };
-  }
-  public componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    console.error("Uncaught error:", error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return this.props.fallback;
-    }
-    return this.props.children;
-  }
-}
-
-export default ErrorBoundary;
+// ...
+axios.get<Quote>(
+  // ...
+)
 ```
-
-HINT: For the _fetcher_ function in _exercises\14-suspense\src\CatFact.jsx_, you won't be able to spread the arguments anymore. Before saving _CatFact.jsx_ as a TypeScript file, you can change the arguments so that your only argument is the url ...
-
-```js
-const fetcher = (url) => axios(url).then((res) => res.data.fact);
-```
-
-... and then save as _.tsx_ and add TypeScript types to it.
 
 ## Acceptance Criteria
 

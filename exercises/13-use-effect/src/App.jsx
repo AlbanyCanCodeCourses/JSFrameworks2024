@@ -1,8 +1,8 @@
-// Import useEffect here
+import { useEffect } from "react";// Import useEffect here
 import { useState } from "react";
 import "./App.css";
 // import Axios (or use Fetch)
-
+import axios from "axios";
 function App() {
   /**
    * dogImages
@@ -13,6 +13,7 @@ function App() {
    *     "https://images.dog.ceo/breeds/lhasa/n02098413_1137.jpg"
    * ]
    */
+  const dogUrl = [dog.ceo/api/breeds/image/random,]
   const [dogImages, setDogImages] = useState([]);
 
   /**

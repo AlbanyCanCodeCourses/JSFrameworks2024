@@ -1,8 +1,9 @@
 // import useEffect
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 import "./App.css";
 // import Axios (or use Fetch)
-
+import axios from "axios";
 function App() {
   /**
    * Set up state and make AJAX requests here

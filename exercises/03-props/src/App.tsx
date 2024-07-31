@@ -6,7 +6,7 @@ function App(){
     
     return(
     <div className="App">
-        <Welcome name="Joe" />
+        <Welcome name ="Joe" />
         <Welcome />
         <Heading>Welcome to my React App!</Heading>
 

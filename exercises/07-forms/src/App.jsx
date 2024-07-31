@@ -1,6 +1,6 @@
 import "./App.css";
-import countries from "./assets/countries.json"
-import states from "./assets/states.json";
+import { countries } from "./assets/countries";
+import { states } from "./assets/states";
 import { useState } from "react";
 
 function App() {

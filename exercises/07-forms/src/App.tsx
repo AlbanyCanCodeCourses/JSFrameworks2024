@@ -2,6 +2,7 @@ import "./App.css";
 import { countries } from "./assets/countries";
 import { states } from "./assets/states";
 import { useState } from "react";
+import { ChangeEvent, FormEvent } from "react";
 
 function App() {
   const [results, setResults] = useState(false);
@@ -14,7 +15,8 @@ function App() {
   const [postalCode, setPostalCode] = useState("");
   const [country, setCountry] = useState("");
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setResults(true);
   };

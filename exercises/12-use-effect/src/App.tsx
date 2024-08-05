@@ -24,7 +24,7 @@ function App() {
 
     try {
       // 2. Make AJAX request
-      const quotes = await axios.get("https://ron-swanson-quotes.herokuapp.com/v2/quotes");
+      const quotes = await axios.get<string[]>("https://ron-swanson-quotes.herokuapp.com/v2/quotes");
       // 3. Display results
       setQuote(quotes.data[0]);
       setIsLoading(false)

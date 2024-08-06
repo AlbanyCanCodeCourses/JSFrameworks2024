@@ -1,3 +1,4 @@
+import { useState } from "react";
 import dice1 from "./dice1.svg";
 import dice2 from "./dice2.svg";
 import dice3 from "./dice3.svg";
@@ -12,13 +13,22 @@ const generateRandomDiceNumber = () => {
 };
 
 function DiceRoller() {
+const [diceNumber, setDiceNumber] = useState(generateRandomDiceNumber());
+  const  onClick = () =>setDiceNumber(generateRandomDiceNumber())
+//comapares the dice number with the images makes the source
+  //usestates takes num
+  //add on click sets a new dice number 
+  //bracket notation
+
   /**
    * Try refreshing the screen and see what happens.
    *
    * Refactor me. How can we make this update
    * after the user clicks on the "Roll" button?
    */
-  const diceNumber = generateRandomDiceNumber();
+
+
+
 
   /**
    * Using "diceNumber", this selects a dice image.
@@ -36,7 +46,7 @@ function DiceRoller() {
           )}
           <div>
             {/* Complete me. When the user clicks on the button below, it should "roll the dice". */}
-            <button className="btn btn-primary btn-sm">Roll</button>
+            <button onClick ={onClick} className="btn btn-primary btn-sm">Roll</button>
           </div>
         </h1>
       </div>

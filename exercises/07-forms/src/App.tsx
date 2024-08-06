@@ -1,8 +1,8 @@
 import "./App.css";
 // Import here
-import { useState } from "react";
-import countries from "./assets/countries.json";
-import states from "./assets/states.json";
+import { FormEvent, useState } from "react";
+import { countries } from "./assets/countries";
+import { states } from "./assets/states";
 
 function App() {
   // object for useState for all the fields for the onChange
@@ -17,8 +17,18 @@ function App() {
     signUpForNewsLetter: false,
   });
 
+  type Values = {
+    firstName: string;
+    lastName: string;
+    addressLine1: string;
+    city: string;
+    state: string;
+    postalCode: string;
+    country: string;
+  }
+
   // handle the change
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value, type, checked } = e.target;
     setFormField({...formField,
       [name]: type === "checkbox" ? checked: value,
@@ -26,7 +36,7 @@ function App() {
   };
 
   // display results after submitting form
-  const submission = (e) => {
+  const submission = (e: FormEvent) => {
     e.preventDefault();
     setDisplayResults(true);
   };
@@ -44,7 +54,7 @@ function App() {
           name="firstName"
           type="text"
           className="form-control"
-          value={formField.firstName}
+          value={formField.firstName || ""}
           onChange={handleChange}
         />
       </div>
@@ -57,7 +67,7 @@ function App() {
           name="lastName"
           type="text"
           className="form-control"
-          value={formField.lastName}
+          value={formField.lastName || ""}
           onChange={handleChange}
         />
       </div>
@@ -70,7 +80,7 @@ function App() {
           name="addressLine1"
           type="text"
           className="form-control"
-          value={formField.addressLine1}
+          value={formField.addressLine1 || ""}
           onChange={handleChange}
         />
         <p className="help-block text-muted">
@@ -82,14 +92,14 @@ function App() {
         <label htmlFor="city" className="control-label">
           City / Town
         </label>
-        <input id="city" name="city" type="text" className="form-control" value={formField.city} onChange={handleChange} />
+        <input id="city" name="city" type="text" className="form-control" value={formField.city || ""} onChange={handleChange} />
       </div>
       <div className="mb-3">
         <label htmlFor="state" className="control-label">
           State / Province / Region
         </label>
         {/* Loop through the states you imported here */}
-        <select id="state" name="state" className="form-control" value={formField.state} onChange={handleChange}>
+        <select id="state" name="state" className="form-control" value={formField.state || ""} onChange={handleChange}>
           {states.map((state) => {
             return (
               <option key={state} value={state}>{state}</option>
@@ -107,7 +117,7 @@ function App() {
           name="postalCode"
           type="text"
           className="form-control"
-          value={formField.zip}
+          value={formField.postalCode || ""}
           onChange={handleChange}
         />
       </div>
@@ -117,7 +127,7 @@ function App() {
           Country
         </label>
         {/* Loop through the countries you imported here */}
-        <select id="country" name="country" className="form-control" value={formField.country} onChange={handleChange}>
+        <select id="country" name="country" className="form-control" value={formField.country || ""} onChange={handleChange}>
           {countries.map((country) => {
             return (
               <option key={country} value={country}>{country}</option>
@@ -131,7 +141,7 @@ function App() {
           name="signUpForNewsLetter"
           type="checkbox"
           className="form-check-input"
-          checked={formField.newsLetter}
+          checked={formField.signUpForNewsLetter}
           onChange={handleChange}
         />
         <label htmlFor="signUpForNewsLetter" className="form-check-label">

@@ -2,6 +2,8 @@
 import React from "react";
 import translations from "./LoginTranslations.json";
 // Import "TranslatorContext"
+import { TranslatorContext } from "../../contexts/TranslatorContext";
+import { useContext } from "react";
 
 function Login() {
   /**
@@ -13,7 +15,8 @@ function Login() {
   /**
    * Replace "en" with a constant or variable.
    */
-  const t = translations["en"];
+  const languages = useContext(TranslatorContext);
+  const t = translations[languages];
 
   /**
    * You do not have to change anything below this line.

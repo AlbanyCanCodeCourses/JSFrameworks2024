@@ -2,6 +2,7 @@
 import Languages from "../Languages/Languages";
 import translations from "./FooterTranslations.json";
 // Import "TranslatorContext"
+import { TranslatorContext } from "../../contexts/TranslatorContext";
 
 function Footer() {
   /**
@@ -9,11 +10,12 @@ function Footer() {
    * @see exercises/08a-context-api/src/App.jsx
    * @see solutions/08a-context-api/App.solutions.jsx
    */
+  const [language] = useContext(TranslatorContext);
 
   /**
    * Replace "en" with a constant or variable.
    */
-  const t = translations["en"];
+  const t = translations[language];
 
   /**
    * You do not have to change anything below this line.

@@ -17,15 +17,43 @@ import states from "../../assets/states";
  * - country
  * - a callback function(s) for setting first name, last name, etc.
  */
-function AddressForm(props) {
+function AddressForm({ props }) {
+  const {
+    firstName,
+    setFirstName,
+    lastName,
+    setLastName,
+    addressLine1,
+    setAddressLine1,
+    city,
+    setCity,
+    state,
+    setState,
+    postalCode,
+    setPostalCode,
+    country,
+    setCountry,
+    didSignUp,
+    setDidSignUp,
+
+    setDisplayResults
+  } = props;
+
+
+
   /**
    * You will need to:
    * - Set the value of each <input> / <select> to something from props
    * - Use callback function(s) in props to update <App>'s state
    * - Add an event handler to handle form submission
    */
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setDisplayResults(true);
+  }
   return (
-    <form className="container mt-4">
+    <form className="container mt-4" onSubmit={handleSubmit}>
       <div className="mb-3">
         <label htmlFor="firstName" className="control-label">
           First Name
@@ -35,6 +63,8 @@ function AddressForm(props) {
           name="firstName"
           type="text"
           className="form-control"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
         />
       </div>
       <div className="mb-3">
@@ -46,6 +76,8 @@ function AddressForm(props) {
           name="lastName"
           type="text"
           className="form-control"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
         />
       </div>
       <div className="mb-3">
@@ -57,9 +89,11 @@ function AddressForm(props) {
           name="addressLine1"
           type="text"
           className="form-control"
+          value={addressLine1}
+          onChange={(e) => setAddressLine1(e.target.value)}
         />
         <p className="help-block text-muted">
-          Street address, P.O. box, company name, c/o
+          Street Address, P.O. Box, Company Name, C/O
         </p>
       </div>
 
@@ -67,16 +101,34 @@ function AddressForm(props) {
         <label htmlFor="city" className="control-label">
           City / Town
         </label>
-        <input id="city" name="city" type="text" className="form-control" />
+        <input
+          id="city"
+          name="city"
+          type="text"
+          className="form-control"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
       </div>
       <div className="mb-3">
         <label htmlFor="state" className="control-label">
           State / Province / Region
         </label>
-        <select id="state" name="state" className="form-control">
-          <option></option>
+        {/* Loop through the states you imported here */}
+        <select
+          id="state"
+          name="state"
+          className="form-control"
+          value={state}
+          onChange={(e) => setState(e.target.value)}
+        >
+          <option value=""></option>
           {states.map((state, idx) => {
-            return <option key={`state-${idx}`}>{state}</option>;
+            return (
+              <option value={state} key={`state-${idx}`}>
+                {state}
+              </option>
+            );
           })}
         </select>
       </div>
@@ -90,6 +142,8 @@ function AddressForm(props) {
           name="postalCode"
           type="text"
           className="form-control"
+          value={postalCode}
+          onChange={(e) => setPostalCode(e.target.value)}
         />
       </div>
 
@@ -97,34 +151,49 @@ function AddressForm(props) {
         <label htmlFor="country" className="control-label">
           Country
         </label>
-        <select id="country" name="country" className="form-control">
-          <option></option>
-          {countries.map((state, idx) => {
-            return <option key={`state-${idx}`}>{state}</option>;
+        {/* Loop through the countries you imported here */}
+        <select
+          id="country"
+          name="country"
+          className="form-control"
+          value={country}
+          onChange={(e) => setCountry(e.target.value)}
+        >
+          <option value=""></option>
+          {countries.map((country, idx) => {
+            return (
+              <option value={country} key={`country-${idx}`}>
+                {country}
+              </option>
+            );
           })}
         </select>
       </div>
-      <div className="mb-3">
+      <div className="mb-3 form-check">
         <input
-          id="confirm"
-          name="confirm"
+          id="signUpForNewsLetter"
+          name="signUpForNewsLetter"
           type="checkbox"
           className="form-check-input"
+          checked={didSignUp}
+          onChange={(e) => setDidSignUp(e.target.checked)}
         />
-        <label htmlFor="confirm" className="form-check-label">
+        <label htmlFor="signUpForNewsLetter" className="form-check-label">
           Sign Up For Newsletter
         </label>
       </div>
-
       <button type="submit" className="btn btn-primary">
         Submit
       </button>
+                 
+
     </form>
   );
 }
 
 AddressForm.propTypes = {
   setDisplayResults: PropTypes.func.isRequired,
+  
   // And others that you will need to pass in
   // To learn more about PropTypes, please refer to https://reactjs.org/docs/typechecking-with-proptypes.html
 };

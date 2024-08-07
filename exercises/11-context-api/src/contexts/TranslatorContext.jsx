@@ -1,15 +1,24 @@
-import { createContext, useState } from "react";
+/* eslint-disable react/prop-types */
+// src/contexts/TranslatorContext.js
+import React, { createContext, useState } from 'react';
 
-/**
- * I'm initializing the Context API here.
- * Every component that either sets or gets something from the Context API will need to import this.
- */
 export const TranslatorContext = createContext();
+// created context
 
-export function TranslatorProvider({ children }) {
-  /**
-   * Complete me. This component should be similar to the "App" component in the first context API exercise.
-   * @see previous Context Api exercise
-   * @see solutions for previous Context Api exercise
-   */
-}
+
+//  a component that will wrap around other components to provide 
+// them with the language state and functions.
+export const TranslatorProvider = ({ children }) => {
+  
+ //state variables
+  const [language, setLanguage] = useState('en');
+
+  return (
+    //this will makes the state and functions available to any child components that consume the context.
+// value is an object containing the state variables and functions that need to be shared.
+// {children} allows any nested components to access the context values.
+    <TranslatorContext.Provider value={{ language, setLanguage }}>
+      {children}
+    </TranslatorContext.Provider>
+  );
+};

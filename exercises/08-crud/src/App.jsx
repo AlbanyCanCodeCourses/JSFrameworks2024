@@ -1,17 +1,45 @@
 // Import something here
+import { useState } from "react";
 import "./App.css";
 
 const GroceryList = () => {
+  const [groceryitem, setGroceryitem] = useState([]);
+  const newGroceryItem = () => {
+    setGroceryItem([...groceryitem, ""]);
+  };//adding new item
+  
+  const GroceryList = () => {
+  const [groceryitem, setGroceryitem] = useState([]);
+
+  const newGroceryItem = () => {
+    setGroceryitem([...groceryitem, ""]);
+    console.log(setGroceryitem);
+  };
+
+  const UpdateItem = (userInput, index) => {
+    const newGroceryItems = [...groceryitem];
+    newGroceryItems[index] = userInput;
+    setGroceryitem(newGroceryItems);
+  };
+  }
+  const HandleSubmit = () => {
+    e.prevent.Default();
+  }
+  
   return (
     <div className="container">
       <div className="card card-body bg-light mb-2">
-        <form method="POST" className="row g-3">
+        <form method="POST" className="row g-3" onSubmit={HandleSubmit}>
           <div className="col">
             <input
               className="form-control"
               type="text"
               placeholder="Name of grocery item..."
               aria-label="Name of grocery item..."
+              value={groceryitem}
+              onChange={(e) => {
+                UpdateItem(e.target.value,index);
+              }}
             />
           </div>
           <div className="col">
@@ -25,7 +53,7 @@ const GroceryList = () => {
             />
           </div>
           <div className="col-md-auto">
-            <button type="submit" className="btn btn-success">
+            <button type="submit" onClick={newGroceryItem} className="btn btn-success">
               Add
             </button>
           </div>

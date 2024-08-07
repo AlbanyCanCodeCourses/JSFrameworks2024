@@ -1,7 +1,7 @@
 import { useState, FormEvent } from "react";
 import NavBar from "../NavBar/NavBar";
 import "./ShoppingCart.css";
-// Import something
+import { useNavigate } from"react-router-dom";
 
 function ShoppingCart() {
   /**
@@ -11,6 +11,7 @@ function ShoppingCart() {
   const [cardholderName, setCardholderName] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [cvvNumber, setCvvNumber] = useState("");
+  const navigate = useNavigate();
 
   /**
    * Handle the form.
@@ -20,12 +21,16 @@ function ShoppingCart() {
    * 2.) Make it so that if the user hits the back button,
    * they will not see this page.
    */
+  const handleSubmit = (e:FormEvent) => {
+    e.preventDefault();
+    navigate("/thank-you", {replace:true});
+  };
 
   return (
     <>
       <NavBar />
       <div className="uk-container">
-        <form className="ShoppingCart" method="POST">
+        <form className="ShoppingCart" method="POST" onSubmit={handleSubmit}>
           <fieldset className="uk-fieldset">
             <legend className="uk-legend">Checkout</legend>
 
